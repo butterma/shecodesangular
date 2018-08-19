@@ -40,7 +40,7 @@ import {
          MatStepperModule,
          MatTabsModule,
          MatTooltipModule,
-         MatTreeModule
+         MatTreeModule,
 } from '@angular/material';
 
 @NgModule({
@@ -84,7 +84,8 @@ import {
          MatStepperModule,
          MatTabsModule,
          MatTooltipModule,
-         MatTreeModule
+         MatTreeModule,
+       
     ],
     exports:[
         MatSidenavModule,
@@ -127,7 +128,8 @@ import {
          MatStepperModule,
          MatTabsModule,
          MatTooltipModule,
-         MatTreeModule
+         MatTreeModule,
+        
     ]
 })
 

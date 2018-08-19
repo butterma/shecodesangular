@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material';
 import { ResetComponent } from './reset/reset.component';
 import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
+import { UserManagmentComponent } from './user-managment/user-managment.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthService } from './services/auth.service';
     SignupComponent,
     ForgotComponent,
     ResetComponent,
-    AlertComponent
+    AlertComponent,
+    UserManagmentComponent
   ],
   imports: [
     BrowserModule,
