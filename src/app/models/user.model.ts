@@ -5,5 +5,6 @@ export interface User {
         role:String;
         course:String;
         branch: String;
+        image:String;
     }
 

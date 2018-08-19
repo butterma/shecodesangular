@@ -28,6 +28,8 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <img [src]="url" height="200"> <br/>
+    <input type="file" (change)="onFileChanged($event)">
    
    <!-- <input id="submit" type="submit" value="SIGNUP">-->
     <button id="submit" type="submit" (click)="signup(username.value,password.value,selectedbranch,selectedcourse)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">SIGNUP</button>

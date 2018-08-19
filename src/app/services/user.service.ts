@@ -12,15 +12,9 @@ export class UserService {
     
    }
 
-  addUser(email,password,branch,course){
-    const user={
-      username:email,
-      password:password,
-      branch:branch,
-      course:course,
-      approved:false      
-    };
-    return this.http.post(`${this.uri}/users/signup`,user);
+  addUser(upLoadData){
+    console.log("send uploaddata to signup");
+    return this.http.post(`${this.uri}/users/signup`,upLoadData);
   }
 
   sendMail(email){

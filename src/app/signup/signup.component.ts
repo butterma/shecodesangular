@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {UserService} from '../services/user.service';
 import {AlertService} from '../services/alert.service';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+
 export interface Item{
   value:string;
   viewValue:string;
@@ -15,6 +17,8 @@ export interface Item{
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
+  selectedFile : File = null;
 
   courses:Item[]=[
     {value:'python',viewValue:'python'},
@@ -41,7 +45,7 @@ export class SignupComponent implements OnInit {
 
   createForm:FormGroup;
   loading=false;
-  constructor(private userService:UserService,private alertService:AlertService, private fb:FormBuilder,private router:Router) { 
+  constructor(private http: HttpClient,private userService:UserService,private alertService:AlertService, private fb:FormBuilder,private router:Router) { 
     this.createForm=this.fb.group({
       username:['',Validators.required],
       password:'',
@@ -49,8 +53,15 @@ export class SignupComponent implements OnInit {
     });
   }
    signup(username,password,branch,course){
-     console.log(username+" "+password+" "+branch+" "+course);
-    this.userService.addUser(username,password,branch,course)
+     console.log(username+" "+password+" "+branch+" "+course );
+     const upLoadData=new FormData();
+    upLoadData.append('username',username);
+    upLoadData.append('password',password);
+    upLoadData.append('branch',branch);
+    upLoadData.append('course',course);
+    upLoadData.append('approved','0');
+    upLoadData.append('image',this.selectedFile,this.selectedFile.name);
+    this.userService.addUser(upLoadData)
       .pipe(first())
       .subscribe(
         data=>{
@@ -64,5 +75,16 @@ export class SignupComponent implements OnInit {
    }
   ngOnInit() {
   }
-  
+
+  url: String;
+onFileChanged(event) { // called each time file input changes
+  console.log("onFileChanged");
+    if (event.target.files && event.target.files[0]) {
+        {
+          console.log("there is a file");
+          this.selectedFile = <File>event.target.files[0];
+        }
+      }
+    }
 }
+  
