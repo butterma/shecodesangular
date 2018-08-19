@@ -1,0 +1,13 @@
+<header>FORGOT</header>
+
+<form id="form" [formGroup]="createForm" class="topBefore">
+ <!-- <div class="form-group">
+      <input type="text" class="form-control" name="email" placeholder="ENTER YOUR E-MAIL">
+  </div>-->
+  <mat-form-field class="field-full-width" [floatLabel]="never">
+    <input matInput type="email" placeholder="E-MAIL" formControlName="username" #username>
+  </mat-form-field>
+  <!--<input id="submit" type="submit" value="SEND RESET MAIL"/>-->
+  <button id="submit" type="submit" (click)="sendMail(username.value)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">SEND RESET MAIL</button>
+
+</form>

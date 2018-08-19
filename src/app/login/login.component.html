@@ -1,0 +1,47 @@
+<!--<header>LOGIN</header>
+<form id="form" class="topBefore" action="/login" method="POST"> 
+		
+      <input id="email" type="text" placeholder="E-MAIL">
+      <input id="password" type="password" placeholder="PASSWORD">
+      <input id="submit" type="submit" value="LOGIN">
+      <a href="/forgot">FORGOT YOUR PASSWORD?</a>
+</form>
+
+<p>Need an account? <a href="/signup">SIGNUP</a></p>
+<p>OR GO <a href="/">HOME</a></p>-->
+<!--<div>
+      <br>
+      <mat-card>
+            <section class="mat-typography">
+                  <h3>LOGIN</h3>
+            </section>
+            <mat-divider></mat-divider>
+            <br>
+            <form [formGroup]="createForm" class="create-form">
+                  <mat-form-field class="field-full-width">
+                        <input matInput placeholder="E-MAIL" formControlName="username" #username>
+                  </mat-form-field>
+                  <mat-form-field class="field-full-width">
+                        <input matInput placeholder="PASSWORD" formControlName="password" #password>
+                  </mat-form-field>
+                  <mat-divider></mat-divider>
+                  <br><br>
+                  <button type="submit" (click)="login(username.value,password.value)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">LOGIN</button>
+             </form>
+      </mat-card>
+</div>-->
+
+<header>LOGIN</header>
+<form id="form" [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width" [floatLabel]="never">
+            <input type="email" matInput placeholder="E-MAIL" formControlName="username" #username>
+      </mat-form-field>
+      <mat-form-field  class="field-full-width" [floatLabel]="never">
+            <input type="password" matInput placeholder="PASSWORD" formControlName="password" #password>
+      </mat-form-field>
+      <button id="submit" type="submit" (click)="login(username.value,password.value)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">LOGIN</button>
+      <a href="/forgot">FORGOT YOUR PASSWORD?</a>
+
+ </form>
+ <p>Need an account? <a href="/signup">SIGNUP</a></p>
+<p>OR GO <a href="/">HOME</a></p>

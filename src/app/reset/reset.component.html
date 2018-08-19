@@ -1,0 +1,10 @@
+<header>RESET PASSWORD</header>
+  <form id="form" [formGroup]="createForm" class="topBefore">  
+    <mat-form-field class="field-full-width" [floatLabel]="never">
+      <input matInput type="password" placeholder="NEW PASSWORD" formControlName="password" #password>
+    </mat-form-field>
+    <mat-form-field  class="field-full-width" [floatLabel]="never">
+      <input matInput type="password" placeholder="CONFIRM PASSWORD" formControlName="confirmPassword" #confirmPassword>
+    </mat-form-field>
+    <button id="submit" type="submit" (click)="reset(password.value)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">RESET</button>
+   </form>

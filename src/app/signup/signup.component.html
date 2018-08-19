@@ -1,0 +1,34 @@
+<header>SIGNUP</header>
+
+<form id="form" [formGroup]="createForm" class="topBefore">
+		
+     <!-- <input id="email" type="text" placeholder="E-MAIL">
+      <input id="password" type="password" placeholder="PASSWORD">
+      <input id="re-password" type="password" placeholder="CONFIRM PASSWORD">-->
+      <mat-form-field class="field-full-width" [floatLabel]="never">
+        <input matInput type="email" placeholder="E-MAIL" formControlName="username" #username>
+      </mat-form-field>
+      <mat-form-field class="field-full-width" [floatLabel]="never">
+        <input matInput type="password" placeholder="PASSWORD" formControlName="password" #password>
+      </mat-form-field>
+      <mat-form-field  class="field-full-width" [floatLabel]="never">
+        <input matInput type="password" placeholder="CONFIRM PASSWORD" formControlName="confirmPassword" #confirmPassword>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="CHOOSE BRANCH" [(value)]="selectedbranch">
+          <mat-option *ngFor="let branch of branches" [value]="branch.value">
+            {{branch.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="CHOOSE COURSE" [(value)]="selectedcourse">
+        <mat-option *ngFor="let course of courses" [value]="course.value">
+          {{course.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+   
+   <!-- <input id="submit" type="submit" value="SIGNUP">-->
+    <button id="submit" type="submit" (click)="signup(username.value,password.value,selectedbranch,selectedcourse)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">SIGNUP</button>
+</form>
