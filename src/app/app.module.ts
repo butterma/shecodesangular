@@ -25,7 +25,8 @@ import { ResetComponent } from './reset/reset.component';
 import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
 import { UserManagmentComponent } from './user-managment/user-managment.component';
-
+import { EditModalComponent } from './edit-modal/edit-modal.component';
+import {ModalService} from './services/modal.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { UserManagmentComponent } from './user-managment/user-managment.componen
     ForgotComponent,
     ResetComponent,
     AlertComponent,
-    UserManagmentComponent
+    UserManagmentComponent,
+    EditModalComponent
   ],
   imports: [
     BrowserModule,
@@ -54,8 +56,10 @@ import { UserManagmentComponent } from './user-managment/user-managment.componen
   providers: [/*IssueService,*/
     UserService,
     AlertService,
-    AuthService
+    AuthService,
+    ModalService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[EditModalComponent]
 })
 export class AppModule { }

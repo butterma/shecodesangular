@@ -1,8 +1,7 @@
 <div>
   <br>
   <mat-card>
-    <button mat-raised-button color="primary" routerLink="/create">Create New Issue</button>
-    <br><br>
+    <h3>Users</h3>
     <mat-divider></mat-divider>
     <br>
     <table mat-table [dataSource]="users">
@@ -39,3 +38,48 @@
     </table>
   </mat-card>
 </div>
+<app-edit-modal id="edit-modal">
+    <div class="modal">
+        <div class="modal-body">
+          <mat-card class="modal">
+            <section class="mat-typography">
+                <h3>Update User</h3>
+            </section>
+            <mat-divider></mat-divider>
+            <br> 
+            <form id=form [formGroup]="updateForm" class="edit-form">
+                <mat-form-field class="field-full-width">
+                  <input placeholder="Username" matInput formControlName="username" #username>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                  <input placeholder="Password" matInput formControlName="password" #password>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                  <textarea placeholder="Branch" matInput formControlName="branch" #branch></textarea>
+                </mat-form-field>
+               <!-- <mat-form-field  class="field-full-width">
+                    <mat-select placeholder="Severity" formControlName="severity" #severity>
+                      <mat-option value="Low">Low</mat-option>
+                      <mat-option value="Medium">Medium</mat-option>
+                      <mat-option value="High">High</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                    <mat-select placeholder="Status" formControlName="status" #status>
+                      <mat-option value="Open">Open</mat-option>
+                      <mat-option value="In Progress">In Progress</mat-option>
+                      <mat-option value="Done">Done</mat-option>
+                    </mat-select>
+                </mat-form-field>-->
+                <mat-divider></mat-divider>
+                <br><br>
+                <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+                <button type="submit" (click)="updateIssue(username.value, password.value, branch.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+              </form>
+          </mat-card>       
+      </div>
+      </div>
+      <div class="modal-background"></div>
+</app-edit-modal>
+
+

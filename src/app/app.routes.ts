@@ -8,6 +8,7 @@ import {SignupComponent} from './signup/signup.component';
 import {ForgotComponent} from './forgot/forgot.component';
 import {ResetComponent} from './reset/reset.component';
 import {UserManagmentComponent} from './user-managment/user-managment.component';
+import {EditModalComponent} from './edit-modal/edit-modal.component';
 const routes:Routes=[
     {path:'',component:HomeComponent},
     {path:'contact',component:ContactComponent},
@@ -15,6 +16,7 @@ const routes:Routes=[
     {path:'signup',component:SignupComponent},
     {path:'forgot',component:ForgotComponent},
     {path:'user-managment',component:UserManagmentComponent},
+    {path:'edit',component:EditModalComponent},
     {path:'reset/:token',component:ResetComponent}
 ];
 

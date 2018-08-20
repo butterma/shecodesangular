@@ -31,6 +31,7 @@ export class UserService {
   }
 
   getUserById(id){
+    console.log("in get by id "+id);
     return this.http.get(`${this.uri}/users/${id}`);
   }
 
