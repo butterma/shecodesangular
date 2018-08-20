@@ -15,11 +15,11 @@ export class ModalService {
     this.modals=this.modals.filter(x=>x.id!==id);
   }
 
-  open(id:string,userId:string){
+  open(id:string){
     console.log("in modal.service.open "+this.modals.length+" "+id);
     console.log("modal id: "+this.modals[0].id);
     let modal: any=this.modals.filter(x=>x.id===id)[0];
-    modal.open(userId);
+    modal.open();
   }
 
   close(id:string){

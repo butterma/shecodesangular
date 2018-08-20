@@ -88,11 +88,7 @@ header {
   letter-spacing: 7px;
 }
 
-#form {
-  position: relative;
-  width: 500px;
-  margin: 50px auto 100px auto;
-}
+
 
 /*input {
   font-family: 'Lato', sans-serif;
@@ -113,25 +109,7 @@ header {
   -ms-transition: all 0.3s ease-in-out;
 }*/
 
-#submit{
-  width: 502px;
-  
-  padding: 0;
-  margin: -5px 0px 0px 0px;
-  
-  font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
-  color: #b3aca7;
-  
-  outline:none;
-  cursor: pointer;
-  
-  border: solid 1px #b3aca7;
-}
 
-#submit:hover {
-  color: #e2dedb;
-}
 
 p{
   color: #aca49c;
@@ -145,7 +123,63 @@ p,a.href{
   position:center;
 
 }
+table{
+  display: block;
+}
+/* MODAL STYLES
+-------------------------------*/
+app-edit-modal {
+  /* modals are hidden by default */
+  display: none;
+}
+app-edit-modal .modal {
+  /* modal container fixed across whole screen */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+    /* z-index must be higher than .modal-background */
 
+  z-index: 1000;
+  /* enables scrolling for tall modals */
+
+  overflow: auto;
+}
+app-edit-modal .modal .modal-body {
+  padding: 20px;
+  background: #fff;
+
+  /* margin exposes part of the modal background */
+
+  margin: 40px;
+}
+app-edit-modal .modal-background {
+  /* modal background fixed across whole screen */
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* semi-transparent black  */
+
+  background-color: #000;
+  opacity: 0.75;
+  /* z-index must be below .modal and above everything else  */
+
+  z-index: 900;
+}
+body.modal-open {
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+ 
+  overflow: hidden;
+}
+#form {
+  position: relative;
+  width: 500px;
+  margin: 50px auto 100px auto;
+}
 mat-form-field{
   font-family: 'Lato', sans-serif;
   font-size: 0.875em;
@@ -174,55 +208,40 @@ mat-form-field:hover {
   color:#302b25;
 }
 
-
-/* MODAL STYLES
--------------------------------*/
-edit-modal {
-  /* modals are hidden by default */
-background-color: yellow;
-  display: none;
+#submit{
+  width: 502px;
+  
+  padding: 0;
+  margin: -5px 0px 0px 0px;
+  
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  color: #b3aca7;
+  
+  outline:none;
+  cursor: pointer;
+  
+  border: solid 1px #b3aca7;
 }
-edit-modal .edit-modal {
-  /* modal container fixed across whole screen */
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  /* z-index must be higher than .modal-background */
 
-  z-index: 1000;
-  /* enables scrolling for tall modals */
-
-  overflow: auto;
+#submit:hover {
+  color: #e2dedb;
 }
-edit-modal .edit-modal .modal-body {
-  padding: 20px;
-  background: #fff;
-  background-color: yellow;
 
-  /* margin exposes part of the modal background */
+mat-checkbox{
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  width: 470px;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  
+  background: transparent;
+  outline: none;
+  color: #302b25;
+  border-bottom: none;
 
-  margin: 40px;
-}
-edit-modal .modal-background {
-  /* modal background fixed across whole screen */
-
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  /* semi-transparent black  */
-
-  background-color: #000;
-  opacity: 0.75;
-  /* z-index must be below .modal and above everything else  */
-
-  z-index: 900;
-}
-body.modal-open {
-  /* body overflow is hidden to hide main scrollbar when modal window is open */
-
-  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
 }

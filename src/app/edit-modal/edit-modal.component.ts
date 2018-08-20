@@ -7,8 +7,7 @@ import { Router,ActivatedRoute } from '../../../node_modules/@angular/router';
 @Component({
   selector:'app-edit-modal',
   //templateUrl: './edit-modal.component.html',
-  template:
-  ` <ng-content></ng-content>`,    
+  template: ` <ng-content></ng-content>`,    
   styleUrls: ['./edit-modal.component.css']
 })
 export class EditModalComponent implements OnInit,OnDestroy {
@@ -19,11 +18,7 @@ export class EditModalComponent implements OnInit,OnDestroy {
 
   constructor(private modalService:ModalService,private userService:UserService, private el:ElementRef,private fb:FormBuilder,private router:Router,private route:ActivatedRoute) {
     this.element=el.nativeElement;
-    this.updateForm=this.fb.group({
-      username:['',Validators.required],
-      password:''
-    });
-   }
+      }
 
   ngOnInit():void {
     let modal=this;
@@ -35,39 +30,27 @@ export class EditModalComponent implements OnInit,OnDestroy {
     document.body.appendChild(this.element);
 
     this.element.addEventListener('click',function(e:any){
-      if(e.target.className==='edit-modal'){
+      if(e.target.className==='modal'){
         modal.close();
       }
     });
     console.log("add modal to modal service");
-    this.modalService.add(this);
-
-    
+    this.modalService.add(this);   
   }
 
   ngOnDestroy():void{
     this.modalService.remove(this.id);
     this.element.remove();
   }
-  open(id):void{
-    console.log("id: "+id);
-    this.route.params.subscribe(params=>{
-      this.id=id;
-      this.userService.getUserById(id).subscribe(res=>{
-        this.user=res;
-        this.updateForm.get('username').setValue(this.user.username);
-        this.updateForm.get('password').setValue(this.user.password);
-        this.updateForm.get('branch').setValue(this.user.branch);
-      });
-    });
+  open():void{
     console.log("open edit-modal");
     this.element.style.display='block';
-    document.body.classList.add('app-edit-modal');
+    document.body.classList.add('modal-open');
   }
 
   close():void{
     this.element.style.display='none';
-    document.body.classList.remove('edit-modal');
+    document.body.classList.remove('modal-open');
   }
 
 }

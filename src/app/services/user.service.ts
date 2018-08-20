@@ -29,15 +29,18 @@ export class UserService {
     return this.http.get(`${this.uri}/users/${id}`);
   }
 
-  updateUser(id,email,password,role,course,branch){
+  updateUser(id,email,password,role,branch,course,approved){
     const user={
       username:email,
       password:password,
       role:role,
-      course:course,
-      branch:branch
+      branch:branch,
+      course:course,  
+      approved:approved    
     };
-    return this.http.post(`${this.uri}/users/update/${id}`, user);
+    console.log(user);
+    console.log(id);
+    return this.http.post(`${this.uri}/users/update/${id}`,user);
   }
 
   deleteUser(id){
