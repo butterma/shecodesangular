@@ -15,17 +15,26 @@ export class AuthService {
     return this.http.post<any>(`${this.uri}/users/login`,{username:username,password:password})
       .pipe(map(user=>{
         //login successful if there's a jwt token in the reponse
-        if(user && user.token){
+        console.log('in login authservice');
+        if(user){
         //store user details and jwt
-        localStorage.setItem('currentUSer',JSON.stringify(user));  
+        console.log('save user in session storage');
+        sessionStorage.setItem('currentUser',JSON.stringify(user));  
         }
         return user;
       }));
   }
 
+  loggedIn(){
+    const user=JSON.parse(sessionStorage.getItem('currentUser'));
+    return user!=null?true:false;
+  }
+  getLoggedInUser(){
+    return JSON.parse(sessionStorage.getItem('currentUser'));
+  }
   logout(){
     //remove user from local storage
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
   }
 
   reset(pass){

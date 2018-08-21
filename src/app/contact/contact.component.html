@@ -2,9 +2,9 @@
 
 <form id="form" class="topBefore">
 		
-		  <input id="name" type="text" placeholder="NAME">
-		  <input id="email" type="text" placeholder="E-MAIL">
-		  <textarea id="message" type="text" placeholder="MESSAGE"></textarea>
-  <input id="submit" type="submit" value="GO!">
+		  <input id="name" type="text" placeholder="NAME" formControlName="name" #name>
+		  <input id="email" type="text" placeholder="E-MAIL" formControlName="email" #email>
+		  <textarea id="message" type="text" placeholder="MESSAGE" formControlName="message" #message></textarea>
+  <button id="submit" type="submit" (click)="sendContact(name.value,email.value,message.value)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">GO!</button>
   
 </form>

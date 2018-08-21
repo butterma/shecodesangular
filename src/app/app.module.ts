@@ -27,6 +27,8 @@ import { AuthService } from './services/auth.service';
 import { UserManagmentComponent } from './user-managment/user-managment.component';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 import {ModalService} from './services/modal.service';
+import { ChatModule } from './chat/chat.module';
+import { ForumsModule } from './forums/forums.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,8 @@ import {ModalService} from './services/modal.service';
     ReactiveFormsModule,
     FormsModule,
     MatSelectModule,
+    ChatModule,
+    ForumsModule,
   ],
   providers: [/*IssueService,*/
     UserService,
