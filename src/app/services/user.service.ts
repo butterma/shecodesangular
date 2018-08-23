@@ -13,7 +13,7 @@ export class UserService {
    }
 
   addUser(upLoadData){
-    console.log("send uploaddata to signup");
+    console.log("send upload data to signup");
     return this.http.post(`${this.uri}/users/signup`,upLoadData);
   }
 

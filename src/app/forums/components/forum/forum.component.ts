@@ -29,7 +29,7 @@ export class ForumComponent implements OnInit {
 
   ngOnInit() {
     console.log("in forum ngOnInit");
-    this.socketService.joinRoom({user:this.authService.getLoggedInUser().username,room:this.chatroom});
+    this.socketService.joinRoom({user:this.authService.getLoggedInUser()/*.username*/,room:this.chatroom});
     
   }
 

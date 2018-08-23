@@ -12,16 +12,20 @@ export class AuthService {
   constructor(private http:HttpClient) { }
 
   login(username:string,password:string){
+    console.log('in authservice:login');
     return this.http.post<any>(`${this.uri}/users/login`,{username:username,password:password})
-      .pipe(map(user=>{
-        //login successful if there's a jwt token in the reponse
+      .pipe(map(result=>{
         console.log('in login authservice');
-        if(user){
+        //login successful if there's a jwt token in the reponse
+        console.log(result);
+        if (result.user === "Login successfully")
+        {
         //store user details and jwt
         console.log('save user in session storage');
-        sessionStorage.setItem('currentUser',JSON.stringify(user));  
+        console.log(JSON.stringify(username));
+        sessionStorage.setItem('currentUser',JSON.stringify(username));  
         }
-        return user;
+        return username;
       }));
   }
 
@@ -31,6 +35,7 @@ export class AuthService {
   }
   getLoggedInUser(){
     console.log("in get loggedIn user");
+    console.log(JSON.stringify(sessionStorage));
     return JSON.parse(sessionStorage.getItem('currentUser'));
   }
   logout(){
@@ -39,6 +44,7 @@ export class AuthService {
   }
 
   reset(pass){
+    console.log('in authservice:reset');
     return this.http.post<any>(`${this.uri}/reset/:token`,{password:pass});
   }
 }
