@@ -3,7 +3,7 @@
   <span><i *ngIf="isTyping" class="isTyping">typing...</i></span>
   <div id="chat-window">
       <div *ngFor="let item of messageArray">
-          <p [class.userMessage] = "item.user == authService.getLoggedInUser().username" [class.secUserMessage]="item.user != authService.getLoggedInUser().username">{{ item.message }}</p>                
+          <p [class.userMessage] = "item.username == authService.getLoggedInUser().username" [class.secUserMessage]="item.username != authService.getLoggedInUser().username">{{ item.content }}</p>                
       </div>
       <!-- <div id="feedback"></div> -->
   </div>

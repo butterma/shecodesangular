@@ -21,8 +21,8 @@ export class SocketService {
     this.socket.emit('message',data);
   }
   newMessageRecived(){
-    const observable=new Observable<{user:string,message:String}>(observer=>{
-      this.socket.on('new message',(data)=>{
+    const observable=new Observable<Message>(observer=>{
+      this.socket.on('message',(data)=>{
         observer.next(data);
       });
       return()=>{
@@ -48,12 +48,12 @@ export class SocketService {
 
   newMemeber(){
     console.log("in new member");
-    const observable=new Observable<{user:String,content:String}>(observer=>{
+    const observable=new Observable<Message>(observer=>{
       this.socket.on('joined',(data)=>{
         console.log('new mwmber joined');
         let message:Message= new Message(data.user,'joined the room',new Date());
         console.log(message);
-        observer.next(data);
+        observer.next(message);
       },
     error=>{
       console.log(`Error: ${error}`);

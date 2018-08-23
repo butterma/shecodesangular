@@ -1,4 +1,4 @@
-
+/*
 h2{
     font-size: 18px;
     padding: 10px 20px;
@@ -107,4 +107,207 @@ input{
     color: #888787;
     padding-left: 5px;
 
+}*/
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+input::-webkit-input-placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: #bbb5af;
+}
+
+input::-moz-placeholder{
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+input:focus::-moz-placeholder {
+  color: #bbb5af;
+}
+
+input::placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+input:focus::placeholder {
+  color: #bbb5af;
+}
+
+input::-ms-placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+input:focus::-ms-placeholder {
+  color: #bbb5af;
+}
+
+/* on hover placeholder */
+
+input:hover::-webkit-input-placeholder{
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-webkit-input-placeholder {
+  color: #cbc6c1;
+}
+
+input:hover::-moz-placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-moz-placeholder{
+  color: #cbc6c1;
+}
+
+input:hover::placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+input:hover:focus::placeholder {
+  color: #cbc6c1;
+}
+
+input:hover::placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-ms-placeholder{
+  color: #cbc6c1;
+}
+body{
+  font-family: 'Lato', sans-serif;
+  background: #e2dedb;
+  color: #b3aca7;
+}
+
+header {
+  position: relative;
+  margin: 100px 0 25px 0;
+  font-size: 2.3em;
+  text-align: center;
+  letter-spacing: 7px;
+}
+
+
+input {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  color: #726659;
+  
+  border: solid 1px #b3aca7;
+  
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+#send{
+  width: 100%;
+  
+  padding: 0;
+  margin: -5px 0px 0px 0px;
+  
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  color: #b3aca7;
+  
+  outline:none;
+  cursor: pointer;
+  
+  border: solid 1px #b3aca7;
+}
+
+#submit:hover {
+  color: #e2dedb;
+}
+
+p{
+  color: #aca49c;
+  font-size: 0.875em;
+}
+p,a.href{
+  font-family: 'Lato', sans-serif;
+  background: #e2dedb;
+  color: #b3aca7;
+
+  position:center;
+
+}
+
+
+.userMessage {
+    width: fit-content;
+    max-width: 70%;
+    background-color: #5B9B5B;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 1px;
+    color: white;
+}
+
+.secUserMessage {
+    width: fit-content;
+    max-width: 70%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 1px;
+    color: black;
+}
+
+.isTyping {
+    color: #888787;
+    padding-left: 5px;
+
+}
+#mario-chat{
+    max-width: 1000px;
+    min-width: 500px;
+    margin: 30px auto;
+    border: 1px solid #ddd;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
+    border-radius: 2px;
+    border-radius: 10px;
+}
+
+#chat-window{
+    height: 500px;
+    overflow: auto;
+    background: #E2E2E2;
+}
+
+#output p{
+    padding: 14px 0px;
+    margin: 0 20px;
+    border-bottom: 1px solid #e9e9e9;
+    color: #555;
+}
+
+#output {
+    height: 500px;
+}
+
+#feedback p{
+    color: #aaa;
+    padding: 14px 0px;
+    margin: 0 20px;
+}
+
+.chat-output {
+    height: 500px;
 }
