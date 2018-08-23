@@ -13,7 +13,7 @@ export class ForumComponent implements OnInit {
 
   private isTyping=false;
   messageArray:Array<{user:String,message:String}>=[];
-  private chatroom;
+  private chatroom="Web";
   private message:String;
 
   constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:AuthService) { 
@@ -25,12 +25,16 @@ export class ForumComponent implements OnInit {
     this.socketService.receivedTyping().subscribe(bool=>{
       this.isTyping=bool.isTyping;
     });
+    this.socketService.newMemeber().subscribe(data=>{
+      this.messageArray.push({user:data.user,message:data.content});
+       });
+    console.log("finish forum construtor");
   }
 
   ngOnInit() {
     console.log("in forum ngOnInit");
     this.socketService.joinRoom({user:this.authService.getLoggedInUser()/*.username*/,room:this.chatroom});
-    
+    console.log("finish ngOnInit");
   }
 
   sendMessage(){
