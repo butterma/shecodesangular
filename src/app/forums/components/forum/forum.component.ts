@@ -17,6 +17,7 @@ export class ForumComponent implements OnInit {
   private message:String;
 
   constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:AuthService) { 
+    console.log("in forum constructor");
     this.socketService.newMessageRecived().subscribe(data=>{
       this.messageArray.push(data);
       this.isTyping=false;
@@ -27,15 +28,18 @@ export class ForumComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("in forum ngOnInit");
     this.socketService.joinRoom({user:this.authService.getLoggedInUser().username,room:this.chatroom});
     
   }
 
   sendMessage(){
+    console.log("in send message");
     this.socketService.sendMessage({room:this.chatroom,user:this.authService.getLoggedInUser(),message:this.message});
     this.message='';
   }
   typing(){
+    console.log("in typing");
     this.socketService.typing({room:this.chatroom,user: this.authService.getLoggedInUser()});
   }
 }

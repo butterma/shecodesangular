@@ -30,6 +30,7 @@ export class AuthService {
     return user!=null?true:false;
   }
   getLoggedInUser(){
+    console.log("in get loggedIn user");
     return JSON.parse(sessionStorage.getItem('currentUser'));
   }
   logout(){

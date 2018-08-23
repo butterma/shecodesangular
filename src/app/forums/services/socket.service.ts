@@ -7,11 +7,12 @@ import * as io from 'socket.io-client';
 })
 export class SocketService {
 
-  private socket=io('http://localhost:3000');
+  private socket=io('http://localhost:3000/chat');
 
   constructor() { }
 
   joinRoom(data){
+    console.log(data);
     this.socket.emit('join',data);
   }
   sendMessage(data){
