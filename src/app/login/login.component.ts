@@ -6,6 +6,7 @@ import{first} from 'rxjs/operators';
 //import {UserService} from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { AlertService } from '../services/alert.service';
+import {AutoLogoutService} from '../services/auto-logout.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { AlertService } from '../services/alert.service';
 export class LoginComponent implements OnInit {
    loading=false;
   createForm:FormGroup;
+  autoLogoutService:AutoLogoutService;
   constructor(private authService:AuthService,private alertService:AlertService, private fb:FormBuilder,private router:Router) { 
     this.createForm=this.fb.group({
       username:['',Validators.required],
@@ -23,6 +25,8 @@ export class LoginComponent implements OnInit {
 
     //reset login status
     this.authService.logout();
+    //start autologout service
+    this.autoLogoutService=new AutoLogoutService(this.authService);
   }
 
 login(username,password){

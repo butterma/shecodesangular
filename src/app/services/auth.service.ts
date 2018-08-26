@@ -38,7 +38,9 @@ export class AuthService {
   }
   logout(){
     //remove user from local storage
+    console.log('in logout function');
     sessionStorage.removeItem('currentUser');
+    return this.http.get(`${this.uri}/users/logout`);
   }
 
   reset(pass){
