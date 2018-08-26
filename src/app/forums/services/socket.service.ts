@@ -50,14 +50,14 @@ export class SocketService {
     console.log("in new member");
     const observable=new Observable<Message>(observer=>{
       this.socket.on('joined',(data)=>{
-        console.log('new mwmber joined');
+        console.log('new member joined');
         let message:Message= new Message(data.user,'joined the room',new Date());
         console.log(message);
         observer.next(message);
-      },
+      }/*,
     error=>{
       console.log(`Error: ${error}`);
-    });
+    }*/);
     });
     return observable;
   }
