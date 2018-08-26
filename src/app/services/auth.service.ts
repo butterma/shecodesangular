@@ -29,6 +29,42 @@ export class AuthService {
       }));
   }
 
+  loginWithGooglePlus(username:string,password:string){
+    console.log('in authservice:loginWithGooglePlus');
+    return this.http.get(`${this.uri}/users/auth/google`)
+      /*.pipe(map(result=>{
+        console.log('in login authservice');
+        //login successful if there's a jwt token in the reponse
+        console.log(result);
+        if (result.user === "Login successfully")
+        {
+        //store user details and jwt
+        console.log('save user in session storage');
+        console.log(JSON.stringify(username));
+        sessionStorage.setItem('currentUser',JSON.stringify(username));  
+        }
+        return username;
+      }));*/.subscribe();
+  }
+
+  loginWithFacebook(username:string,password:string){
+    console.log('in authservice:loginWithFacebook');
+    return this.http.post<any>(`${this.uri}/users/auth/facebook`,{username:username,password:password})
+      .pipe(map(result=>{
+        console.log('in login authservice');
+        //login successful if there's a jwt token in the reponse
+        console.log(result);
+        if (result.user === "Login successfully")
+        {
+        //store user details and jwt
+        console.log('save user in session storage');
+        console.log(JSON.stringify(username));
+        sessionStorage.setItem('currentUser',JSON.stringify(username));  
+        }
+        return username;
+      }));
+  }
+
   loggedIn(){
     const user=JSON.parse(sessionStorage.getItem('currentUser'));
     return user!=null?true:false;
