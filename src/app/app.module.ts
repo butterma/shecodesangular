@@ -29,6 +29,7 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
 import {ModalService} from './services/modal.service';
 import { ChatModule } from './chat/chat.module';
 import { ForumsModule } from './forums/forums.module';
+
 @NgModule({
   declarations: [
     AppComponent,

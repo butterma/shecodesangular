@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "angular-file-uploader": "^4.1.2",
     "angular-local-storage": "^0.7.1",
     "core-js": "^2.5.4",
     "ejs": "^2.6.1",
@@ -31,6 +32,7 @@
     "rxjs-compat": "^6.2.1",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
+    "tslib": "^1.9.3",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
