@@ -17,9 +17,11 @@ export class SocketService {
     this.socket.emit('join',data);
     console.log("finish joinRoom");
   }
+
   sendMessage(data){
     this.socket.emit('message',data);
   }
+
   newMessageRecived(){
     const observable=new Observable<Message>(observer=>{
       this.socket.on('message',(data)=>{
@@ -31,9 +33,11 @@ export class SocketService {
     });
     return observable;
   }
+
   typing(data){
     this.socket.emit('typing',data);
   }
+
   receivedTyping(){
     const observable=new Observable<{isTyping:boolean}>(observer=>{
       this.socket.on('typing',(data)=>{
@@ -60,5 +64,10 @@ export class SocketService {
     }*/);
     });
     return observable;
+  }
+
+  uploadFile(file)
+  {
+    console.log("uploading file " + JSON.stringify(file));
   }
 }

@@ -5,8 +5,9 @@
       <div *ngFor="let item of messageArray">
           <p [class.userMessage] = "item.username == authService.getLoggedInUser().username" [class.secUserMessage]="item.username != authService.getLoggedInUser().username">{{ item.content }}</p>                
       </div>
-      <!-- <div id="feedback"></div> -->
   </div>
-  <input (keypress)="typing()" [(ngModel)]="message" name="message" type="text" placeholder="Message" />            
+  <input (keypress)="typing()" [(ngModel)]="message" name="message" type="text" placeholder="Message" /> 
+  
+  <angular-file-uploader [config]="afuConfig" #fileUploader></angular-file-uploader>         
   <button id="send" (click)="sendMessage()">Send</button>    
 </div>

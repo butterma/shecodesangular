@@ -311,3 +311,102 @@ p,a.href{
 .chat-output {
     height: 500px;
 }
+
+   
+.loadingText {
+  color: white;
+  font-size: 2rem;
+  width: fit-content;
+  text-align: center;
+  /* coz in firefox fit-content does'nt work */
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation-name: lt;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.5s;
+}
+
+.loader {
+  font-size: 3rem;
+  position: relative;
+  top: 40vh;
+  width: fit-content;
+  text-align: center;
+  /* coz in firefox fit-content does'nt work */
+  margin-right: auto;
+  margin-left: auto;
+  animation-name: lt;
+  animation-duration: 2.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.loader>.a {
+  color: #E54D26;
+}
+
+.loader>.f {
+  color: #1C6DE3;
+}
+
+.loader>.u {
+  color: #A0C238;
+}
+
+.loader>.d {
+  color: white;
+}
+
+/* @keyframes a-anim {
+from { left: 0vw;}
+to { left: 38vw;}
+} */
+
+@media (max-width:345px) {
+  .loader {
+    font-size: 2rem;
+  }
+}
+
+@keyframes lt {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+.afu-container[_ngcontent-c0]{background-color:#bababa;margin-top:3vh;border:4px solid #8b8888;border-radius:6px}
+.title[_ngcontent-c0]{text-align:center;font-family:Lato,sans-serif}
+.border[_ngcontent-c0]{border:2px solid #8c918e;border-radius:6px;padding:10px;margin:10px}
+.resetBtn[_ngcontent-c0]{padding:10px;margin:10px}
+.ffLato[_ngcontent-c0]{font-family:Lato,sans-serif}
+.bottom-info[_ngcontent-c0]   p[_ngcontent-c0]{font-size:1.5rem}
+.constraints-info[_ngcontent-c1]{margin-top:10px;font-style:italic}
+.padMarg[_ngcontent-c1]{padding:0;margin-bottom:0}  
+.caption[_ngcontent-c1]{margin-right:5px}  
+.textOverflow[_ngcontent-c1] {white-space:nowrap;padding-right:0;overflow:hidden;text-overflow:ellipsis}
+.up_btn[_ngcontent-c1]{color:#000;background-color:transparent;border:2px solid #5c5b5b;border-radius:22px}
+.delFileIcon[_ngcontent-c1]{text-decoration:none;color:#ce0909}
+.dragNDrop[_ngcontent-c1]   
+.div1[_ngcontent-c1]{display:border-box;border:2px dashed #5c5b5b;height:6rem;width:20rem}
+.dragNDrop[_ngcontent-c1]   
+.div1[_ngcontent-c1] > p[_ngcontent-c1]{text-align:center;font-weight:700;color:#5c5b5b;margin-top:1.4em}
+.dragNDropBtmPad[_ngcontent-c1]{padding-bottom:2rem}
+.afu-upload-status[_ngcontent-c1]{padding:0;margin:0}@media screen and (max-width:620px)
+  {
+    .caption[_ngcontent-c1]{padding:0}}@media screen and (max-width:510px)
+    {
+      .sizeC[_ngcontent-c1]{width:25%}}@media screen and (max-width:260px)
+      {
+      .caption[_ngcontent-c1], 
+      .sizeC[_ngcontent-c1]{font-size:10px}
+    }
+  .resetBtn[_ngcontent-c1]{margin-left:3px}
+  

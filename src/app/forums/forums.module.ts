@@ -18,19 +18,5 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 })
 export class ForumsModule {
 
-  afuConfig = {
-    multiple: false,
-    formatsAllowed: ".jpg,.png,.pdf,.docx,.txt,.gif,.jpeg",
-    maxSize: "1",
-    uploadAPI:  {
-      url:"https://example-file-upload-api",
-      headers: {
-     "Content-Type" : "text/plain;charset=UTF-8"
-      }
-    },
-    theme: "attachPin",
-    hideProgressBar: true,
-    hideResetBtn: true,
-    hideSelectBtn: true
-  };
+ 
  }
