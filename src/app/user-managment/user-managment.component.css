@@ -245,3 +245,7 @@ mat-checkbox{
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
 }
+
+th{
+  width:20%;
+}

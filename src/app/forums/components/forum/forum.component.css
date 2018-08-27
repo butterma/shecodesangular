@@ -203,13 +203,15 @@ input {
   font-size: 0.875em;
   height: 50px;
   padding: 0px 15px 0px 15px;
-  width: 100%;
   background: transparent;
   outline: none;
   color: #726659;
-  
+  width: auto;
   border: solid 1px #b3aca7;
   
+  max-width: 1000px;
+  min-width: 500px;
+  width: 100%;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -223,18 +225,18 @@ input {
   margin: -5px 0px 0px 0px;
   
   font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
+  font-size: 1.1em;
   color: #b3aca7;
-  
+  background-color: rgb(179, 47, 91);
   outline:none;
   cursor: pointer;
   
   border: solid 1px #b3aca7;
+  border-radius: 10px;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
 }
 
-#submit:hover {
-  color: #e2dedb;
-}
 
 p{
   color: #aca49c;
@@ -253,7 +255,7 @@ p,a.href{
 .userMessage {
     width: fit-content;
     max-width: 70%;
-    background-color: #5B9B5B;
+    background-color: rgb(207, 28, 103);
     padding: 10px;
     border-radius: 5px;
     margin-top: 1px;
