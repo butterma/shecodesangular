@@ -27,13 +27,13 @@ export class ForumComponent implements OnInit {
     formatsAllowed: ".jpg,.png,.pdf,.docx,.txt,.gif,.jpeg",
     maxSize: "20",
     uploadAPI:  {
-      url:"http://localhost:4200/msgs/uploads",
+      url:"http://localhost:3000/chat/uploads",
       headers: {
      "Content-Type" : "text/plain;charset=UTF-8"
       }
     },
     theme: "attachPin",
-    hideProgressBar: false,
+    hideProgressBar: true,
     hideResetBtn: true,
     hideSelectBtn: true
   };
