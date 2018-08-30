@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable,ViewChild, ElementRef, Inject} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 import { Message } from '../model/message';
-
+import * as SocketIOFileUpload  from 'socketio-file-upload';
+import {DOCUMENT} from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,17 @@ export class SocketService {
 
   private socket=io('http://localhost:3000/chat');
 
-  constructor() { }
+  //@ViewChild('siofuInput')siofuInput:ElementRef;
+  @ViewChild('marioChat')marioChat:ElementRef;
+  constructor(/*@Inject(DOCUMENT)document*/) { 
+    var socket = io.connect();
+    //console.log(this.input.nativeElement);
+    console.log("print");
+    //console.log(this.marioChat.nativeElement);
+    //console.log(document.getElementById('siofu_input'))
+      var uploader = new SocketIOFileUpload(socket);
+      //uploader.listenOnInput(document.getElementById('siofu_input'));
+  }
 
   joinRoom(data){
     console.log(data);
@@ -55,7 +66,7 @@ export class SocketService {
     const observable=new Observable<Message>(observer=>{
       this.socket.on('joined',(data)=>{
         console.log('new member joined');
-        let message:Message= new Message(data.user,'joined the room',new Date());
+        let message:Message= new Message(data.user,'joined the room',new Date(),null);
         console.log(message);
         observer.next(message);
       }/*,
