@@ -1,4 +1,5 @@
-<div id="mario-chat">
+<script src="/siofu/client.js"></script>
+<div id="mario-chat" #marioChat>
   <h2>{{ username }}</h2>
   <span><i *ngIf="isTyping" class="isTyping">typing...</i></span>
   <div id="chat-window">
@@ -8,6 +9,10 @@
   </div>
   <input (keypress)="typing()" [(ngModel)]="message" name="message" type="text" placeholder="Message" /> 
   
-  <angular-file-uploader [config]="afuConfig" #fileUploader></angular-file-uploader>         
+  <input type="file" (change)="onFileChanged($event)">
+  <!--<form [formGroup]="form">
+    <input type="file" formControlName="fileInput">
+  </form>
+  <angular-file-uploader [config]="afuConfig" #fileUploader></angular-file-uploader>         -->
   <button id="send" (click)="sendMessage()">Send</button>    
 </div>

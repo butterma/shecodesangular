@@ -1,5 +1,5 @@
 {
-  "compileOnSave": false,
+  //"compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -8,13 +8,20 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noImplicitAny": false,
     "target": "es5",
     "typeRoots": [
+      "typings",
       "node_modules/@types"
     ],
     "lib": [
       "es2017",
       "dom"
     ]
-  }
+  },
+  "exclude":[
+    "node_modules",
+    "typings"
+  ]
 }
+

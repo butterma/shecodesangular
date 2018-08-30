@@ -33,6 +33,7 @@
     "rxjs-compat": "^6.2.1",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
+    "socketio-file-upload": "^0.6.2",
     "tslib": "^1.9.3",
     "zone.js": "^0.8.26"
   },
