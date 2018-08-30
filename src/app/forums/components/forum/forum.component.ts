@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import {SocketService} from '../../services/socket.service';
-import {AuthService} from '../../../services/auth.service';
+import {MyAuthService} from '../../../services/my-auth.service';
 import {MaterialModule} from '../../../material.module';
 import {Message} from '../../model/message';
 import { ViewChild } from '@angular/core';
@@ -56,6 +56,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
     hideSelectBtn: true
   };
 
+<<<<<<< HEAD
   form = this.fb.group({
     fileInput: this.fb.control(''),
   });
@@ -65,6 +66,9 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
       {        
         console.log(path);       
       });
+=======
+  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:MyAuthService) { 
+>>>>>>> b4cfe6dbb58e45761310c106f10961bea22468f1
     console.log("in forum constructor");
     this.socketService.newMessageRecived().subscribe(data=>{
       this.messageArray.push(data);

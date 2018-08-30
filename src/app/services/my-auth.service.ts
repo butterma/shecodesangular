@@ -5,7 +5,7 @@ import {map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class MyAuthService {
 
   uri='http://localhost:3000';
 
@@ -40,11 +40,13 @@ export class AuthService {
         {
         //store user details and jwt
         console.log('save user in session storage');
-        console.log(JSON.stringify(username));
-        sessionStorage.setItem('currentUser',JSON.stringify(username));  
-        }
+        console.log(JSON.stringify(result));
+        sessionStorage.setItem('currentUser',JSON.stringify(result));  
+        //}
         return username;
-      }));*/.subscribe();
+      }));*/.subscribe(data=>{
+        console.log(data);
+      });
   }
 
   loginWithFacebook(username:string,password:string){

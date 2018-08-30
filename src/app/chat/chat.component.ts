@@ -4,7 +4,7 @@ import {Event} from './model/event.enum';
 import {Message} from './model/message';
 import {User} from '../models/user.model';
 import {SocketService} from './services/socket.service';
-import { throwMatDuplicatedDrawerError } from '../../../node_modules/@angular/material';
+import { throwMatDuplicatedDrawerError } from '@angular/material';
 
 @Component({
   selector: 'app-chat',

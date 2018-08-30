@@ -23,27 +23,32 @@ import {UserService} from './services/user.service';
 import { MatSelectModule } from '@angular/material';
 import { ResetComponent } from './reset/reset.component';
 import { AlertService } from './services/alert.service';
-import { AuthService } from './services/auth.service';
+import { MyAuthService } from './services/my-auth.service';
 import { UserManagmentComponent } from './user-managment/user-managment.component';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 import {ModalService} from './services/modal.service';
 import { ChatModule } from './chat/chat.module';
 import { ForumsModule } from './forums/forums.module';
+import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider} from 'angular-6-social-login';
+
+export function getAuthServiceConfigs(){
+  let config=new AuthServiceConfig(
+    [
+      {
+        id:FacebookLoginProvider.PROVIDER_ID,
+        provider:new FacebookLoginProvider("1248581021950117")
+      },
+      {
+        id:GoogleLoginProvider.PROVIDER_ID,
+        provider:new GoogleLoginProvider("49782137538-l0tbqhpf1tqgu4bq8kd967454ln0fmad.apps.googleusercontent.com")
+      }
+    ]
+  );
+  return config;
+}
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContactComponent,
-    HomeComponent,
-    FooterComponent,
-    LoginComponent,
-    SignupComponent,
-    ForgotComponent,
-    ResetComponent,
-    AlertComponent,
-    UserManagmentComponent,
-    EditModalComponent
-  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -57,14 +62,34 @@ import { ForumsModule } from './forums/forums.module';
     MatSelectModule,
     ChatModule,
     ForumsModule,
+    SocialLoginModule
   ],
+  declarations: [
+    AppComponent,
+    ContactComponent,
+    HomeComponent,
+    FooterComponent,
+    LoginComponent,
+    SignupComponent,
+    ForgotComponent,
+    ResetComponent,
+    AlertComponent,
+    UserManagmentComponent,
+    EditModalComponent
+  ],
+  
   providers: [/*IssueService,*/
     UserService,
     AlertService,
-    AuthService,
-    ModalService
+    MyAuthService,
+    ModalService,
+    {
+      provide:AuthServiceConfig,
+      useFactory:getAuthServiceConfigs
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents:[EditModalComponent]
 })
 export class AppModule { }
+

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthService} from './services/auth.service';
+import {MyAuthService} from './services/my-auth.service';
 import {Router} from '@angular/router';
 import{first} from 'rxjs/operators';
 
@@ -11,7 +11,7 @@ import{first} from 'rxjs/operators';
 export class AppComponent {
   title = 'app';
 
-  constructor(private authService:AuthService,private router:Router){}
+  constructor(private authService:MyAuthService,private router:Router){}
 
   onLogoutClick(){
     console.log("in logout click function");

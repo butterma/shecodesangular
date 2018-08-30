@@ -29,6 +29,10 @@ export class UserService {
     return this.http.get(`${this.uri}/users/${id}`);
   }
 
+  getUsereByUsername(username){
+    return this.http.get(`${this.uri}/users/byname/${username}`);
+  }
+
   updateUser(id,email,password,role,branch,course,approved){
     const user={
       username:email,
