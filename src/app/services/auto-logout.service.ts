@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
+import { MyAuthService } from './my-auth.service';
 
 const MINUTES_UNTIL_AUTO_LOGOUT=15
 const CHEKC_INTERVAL=1000
@@ -18,7 +18,7 @@ export class AutoLogoutService {
   set lastAction(value:any){
     sessionStorage.setItem(STORE_KEY,value);
   }
-  constructor(private authService:AuthService) {
+  constructor(private authService:MyAuthService) {
     console.log("autologoutservice ctor");
     this.check();
     this.initListener();

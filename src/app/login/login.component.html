@@ -43,7 +43,7 @@
       <a href="/forgot">FORGOT YOUR PASSWORD?</a>
 
  </form>
-    <button (click)="loginWithFacebook(username.value,password.value)" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</button>
-   <button (click)="authService.loginWithGooglePlus(username.value,password.value)" class="btn btn-danger"><span class="fa fa-google-plus"  ></span> Google+</button>
+    <button (click)="socialLogin('facebook')" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</button>
+   <button (click)="socialLogin('google')" class="btn btn-danger"><span class="fa fa-google-plus"  ></span> Google+</button>
  <p>Need an account? <a href="/signup">SIGNUP</a></p>
 <p>OR GO <a href="/">HOME</a></p>

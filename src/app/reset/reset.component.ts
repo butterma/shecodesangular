@@ -4,7 +4,7 @@ import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
 import {UserService} from '../services/user.service';
-import { first } from '../../../node_modules/rxjs/operators';
+import { first } from 'rxjs/operators';
 import { AlertService } from '../services/alert.service';
 
 @Component({

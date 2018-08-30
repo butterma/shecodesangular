@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute} from '@angular/router';
 import {SocketService} from '../../services/socket.service';
-import {AuthService} from '../../../services/auth.service';
+import {MyAuthService} from '../../../services/my-auth.service';
 import {MaterialModule} from '../../../material.module';
 import {Message} from '../../model/message';
 import { ViewChild } from '@angular/core';
@@ -39,7 +39,7 @@ export class ForumComponent implements OnInit {
   };
   
 
-  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:AuthService) { 
+  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:MyAuthService) { 
     console.log("in forum constructor");
     this.socketService.newMessageRecived().subscribe(data=>{
       this.messageArray.push(data);

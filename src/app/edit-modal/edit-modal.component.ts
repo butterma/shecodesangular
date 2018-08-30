@@ -3,7 +3,7 @@ import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {ModalService} from '../services/modal.service';
 import{UserService} from '../services/user.service';
-import { Router,ActivatedRoute } from '../../../node_modules/@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 @Component({
   selector:'app-edit-modal',
   //templateUrl: './edit-modal.component.html',
