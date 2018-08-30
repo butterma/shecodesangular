@@ -6,5 +6,6 @@ export interface User {
         image:String;
         course:String;
         approved:Boolean;
+        forumsList:String[];
     }
 
