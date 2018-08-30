@@ -56,19 +56,15 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
     hideSelectBtn: true
   };
 
-<<<<<<< HEAD
   form = this.fb.group({
     fileInput: this.fb.control(''),
   });
 
-  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:AuthService, private fb: FormBuilder) {
+  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:MyAuthService, private fb: FormBuilder) {
     this.form.get('fileInput').valueChanges.subscribe(path => 
       {        
         console.log(path);       
       });
-=======
-  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:MyAuthService) { 
->>>>>>> b4cfe6dbb58e45761310c106f10961bea22468f1
     console.log("in forum constructor");
     this.socketService.newMessageRecived().subscribe(data=>{
       this.messageArray.push(data);
