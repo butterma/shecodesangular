@@ -70,6 +70,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
       {        
         console.log(path);       
       });
+      this.messageArray=new Array<Message>();
     console.log("in forum constructor");
     this.socketService.newMessageRecived().subscribe(data=>{
       this.messageArray.push(data);
@@ -93,19 +94,26 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
     console.log("finish forum construtor");
   }
 
+  getMessages()
+{
+  //fetch last message by room
+  this.chatService.getChatsByRoom(this.chatroom).subscribe(
+    (data:Array<Message>)=>{
+      console.log(data);
+      this.messageArray=data;
+      console.log("upload previous messages");
+      console.log(this.messageArray);
+    });
+}
+
   ngOnInit() {
     console.log("in forum ngOnInit");
     this.socketService.joinRoom({user:this.authService.getLoggedInUser()/*.username*/,room:this.chatroom});
-    //fetch last message by room
-    this.chatService.getChatsByRoom(this.chatroom).subscribe(
-      (data:Array<Message>)=>{
-        console.log(data);
-        this.messageArray=data;
-        console.log("upload previous messages");
-        console.log(this.messageArray);
-      });
+    //this.getMessages();
     console.log("finish ngOnInit");
   }
+
+
 
   sendMessage(){
     console.log("in send message");
@@ -131,9 +139,8 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
           }
         }
       }  
-
-      liked()
-      {
+      liked(id)
+      {    
         console.log("liked");
         if (this.firstPress) 
         {
@@ -151,10 +158,11 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
           this.pressedDisLike = !this.pressedLike;
         }
 
-        this.socketService.updateLikes("");
+        this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"like");
+        this.getMessages();
       }
 
-      disliked()
+      disliked(id)
       {
         console.log("dis liked");
         if (this.firstPress) 
@@ -173,6 +181,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
           this.pressedLike =  !this.pressedDisLike;
         }
         
-        this.socketService.updateLikes("");
+        this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"dislike");
+        this.getMessages();
       }
 }

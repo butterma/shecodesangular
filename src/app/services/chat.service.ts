@@ -15,4 +15,15 @@ export class ChatService {
     return this.http.get(`${this.uri}/chat/${room}`);
   }
 
+  updateMessageById(id, username, operation){
+    if (operation == "like")
+    {
+      return this.http.post(`${this.uri}/chat/like/${id}`,{username:username});      
+    }
+
+    else if (operation == "dislike")
+    {
+      return this.http.post(`${this.uri}/chat/dislike/${id}`,{username:username}); 
+    } 
+  }
 }

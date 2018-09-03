@@ -7,12 +7,12 @@
           <p [class.userMessage] = "item.username == authService.getLoggedInUser().username" [class.secUserMessage]="item.username != authService.getLoggedInUser().username">
             <label>{{item.username}}</label>
             {{ item.content }}
-            <label>{{item.like.length}}  likes   </label>
-            <label>{{item.unLike.length}}  dislikes</label>
-            <button id = "like_button" (click)="liked()"[disabled]="pressedLike" >
+            <label>{{item.likes.length}}  likes   </label>
+            <label>{{item.dislikes.length}}  dislikes</label>
+            <button id = "like_button" (click)="liked(item._id)"[disabled]="pressedLike" >
               <mat-icon class="icon">thumb_up_alt</mat-icon>
             </button>
-            <button id="dislike_button" (click)="disliked()" [disabled]="pressedDisLike">
+            <button id="dislike_button" (click)="disliked(item._id)" [disabled]="pressedDisLike">
                 <mat-icon class="icon">thumb_down_alt</mat-icon>
             </button>
           </p>                

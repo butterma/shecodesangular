@@ -81,9 +81,5 @@ export class SocketService {
   {
     console.log("uploading file " + JSON.stringify(file));
   }
-
-  updateLikes(data)
-  {
-    this.socket.emit('updateLikes', data);
-  }
+  
 }
