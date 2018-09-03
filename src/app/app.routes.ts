@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {AuthGuard} from './guards/auth.guard';
 
 import {HomeComponent} from './home/home.component';
 import {ContactComponent} from './contact/contact.component';
@@ -18,12 +19,12 @@ const routes:Routes=[
     {path:'login',component:LoginComponent},
     {path:'signup',component:SignupComponent},
     {path:'forgot',component:ForgotComponent},
-    {path:'user-managment',component:UserManagmentComponent},
-    {path:'edit',component:EditModalComponent},
+    {path:'user-managment',component:UserManagmentComponent,canActivate:[AuthGuard]},
+    {path:'edit',component:EditModalComponent, canActivate:[AuthGuard]},
     {path:'reset/:token',component:ResetComponent},
     {path:'chat',component:ChatComponent},
-    {path:'forums',component:ForumsComponent},
-    {path:'forum',component:ForumComponent}
+    {path:'forums',component:ForumsComponent,canActivate:[AuthGuard]},
+    {path:'forum',component:ForumComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

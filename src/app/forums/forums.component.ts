@@ -12,7 +12,7 @@ import {Message} from './model/message';
 export class ForumsComponent implements OnInit {
 
   private isTyping=false;
-  forums:Array<String>=[];
+  forums:String[];
   displayedColumns=['name','action'];
   constructor(private router:Router,private chatService:ChatService,private userService:UserService) {
     
@@ -24,9 +24,10 @@ export class ForumsComponent implements OnInit {
   fetchForums(){
     //TODO: get user's forum list
     console.log("fetch forums");
-    this.userService.getUsereByUsername(sessionStorage.getItem('currentUser'))
+    this.userService.getUsereByUsername(JSON.parse(sessionStorage.getItem('currentUser')))
     .subscribe((data:User)=>{
-      this.forums=data.forumsList;
+      this.forums=data.forums;
+      console.log(this.forums);
       console.log('Data request....');
     });
   }

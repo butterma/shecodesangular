@@ -18,12 +18,13 @@ export class MyAuthService {
         console.log('in login authservice');
         //login successful if there's a jwt token in the reponse
         console.log(result);
-        if (result.user === "Login successfully")
+        if (result.status === "Login successfully")
         {
         //store user details and jwt
         console.log('save user in session storage');
         console.log(JSON.stringify(username));
-        sessionStorage.setItem('currentUser',JSON.stringify(username));  
+        sessionStorage.setItem('currentUser',JSON.stringify(result.user));  
+        sessionStorage.setItem('currentRole',JSON.stringify(result.role));
         }
         return username;
       }));
@@ -74,10 +75,21 @@ export class MyAuthService {
   getLoggedInUser(){
     return JSON.parse(sessionStorage.getItem('currentUser'));
   }
+
+  getLoggedInUserRole(){
+    return JSON.parse(sessionStorage.getItem('currentRole'));
+  }
+
+  isAdmin()
+  {
+    const role=JSON.parse(sessionStorage.getItem('currentRole'));
+    return role==='Admin'?true:false;
+  }
   logout(){
     //remove user from local storage
     console.log('in logout function');
     sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentRole');
     return this.http.get(`${this.uri}/users/logout`);
   }
 

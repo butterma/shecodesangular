@@ -11,5 +11,8 @@ export class ChatService {
   getChats(){
     return this.http.get(`${this.uri}/chat`);
   }
+  getChatsByRoom(room){
+    return this.http.get(`${this.uri}/chat/${room}`);
+  }
 
 }
