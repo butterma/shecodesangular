@@ -4,7 +4,18 @@
   <span><i *ngIf="isTyping" class="isTyping">typing...</i></span>
   <div id="chat-window">
       <div *ngFor="let item of messageArray">
-          <p [class.userMessage] = "item.username == authService.getLoggedInUser().username" [class.secUserMessage]="item.username != authService.getLoggedInUser().username">{{ item.content }}</p>                
+          <p [class.userMessage] = "item.username == authService.getLoggedInUser().username" [class.secUserMessage]="item.username != authService.getLoggedInUser().username">
+            <label>{{item.username}}</label>
+            {{ item.content }}
+            <label>{{item.like.length}}  likes   </label>
+            <label>{{item.unLike.length}}  dislikes</label>
+            <button id = "like_button" (click)="liked()"[disabled]="pressedLike" >
+              <mat-icon class="icon">thumb_up_alt</mat-icon>
+            </button>
+            <button id="dislike_button" (click)="disliked()" [disabled]="pressedDisLike">
+                <mat-icon class="icon">thumb_down_alt</mat-icon>
+            </button>
+          </p>                
       </div>
   </div>
   <input (keypress)="typing()" [(ngModel)]="message" name="message" type="text" placeholder="Message" /> 

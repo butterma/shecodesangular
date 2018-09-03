@@ -11,6 +11,8 @@ export class Message {
         this.content=_content;
         this.date=_date;
         this.file = _file;
+        this.like = Array();
+        this.unLike = Array();
     }
 }
 

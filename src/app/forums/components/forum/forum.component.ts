@@ -36,6 +36,11 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
   messageArray:Array<Message>=[];
   private chatroom="Web";
   private message:String;
+  private likes:number;
+  private dislikes:number;
+  private pressedLike:Boolean;
+  private pressedDisLike:Boolean;
+  private firstPress:Boolean;
   private fileNgModel:File;
   @ViewChild('fileUploader')
   private fileUploader:AngularFileUploaderComponent;
@@ -71,6 +76,8 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
       console.log("message array: ");
       console.log(this.messageArray);
       this.isTyping=false;
+      this.pressedDisLike = this.pressedLike = false;
+      this.firstPress = true;
       
     });
     this.socketService.receivedTyping().subscribe(bool=>{
@@ -116,4 +123,48 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
           }
         }
       }  
+
+      liked()
+      {
+        console.log("liked");
+        if (this.firstPress) 
+        {
+          this.likes++;
+          this.pressedLike = true;
+          this.pressedDisLike = false;
+          this.firstPress = false;
+        }
+
+        else
+        {
+          this.likes++;
+          this.dislikes--;
+          this.pressedLike =  !this.pressedLike;
+          this.pressedDisLike = !this.pressedLike;
+        }
+
+        this.socketService.updateLikes("");
+      }
+
+      disliked()
+      {
+        console.log("dis liked");
+        if (this.firstPress) 
+        {
+          this.dislikes++;
+          this.pressedDisLike = true;
+          this.pressedLike = false;
+          this.firstPress = false;
+        }
+
+        else
+        {
+          this.dislikes++;
+          this.likes--;
+          this.pressedDisLike = !this.pressedDisLike;
+          this.pressedLike =  !this.pressedDisLike;
+        }
+        
+        this.socketService.updateLikes("");
+      }
 }
