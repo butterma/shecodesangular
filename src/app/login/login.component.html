@@ -43,7 +43,9 @@
       <a href="/forgot">FORGOT YOUR PASSWORD?</a>
 
  </form>
-    <button (click)="socialLogin('facebook')" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</button>
-   <button (click)="socialLogin('google')" class="btn btn-danger"><span class="fa fa-google-plus"  ></span> Google+</button>
- <p>Need an account? <a href="/signup">SIGNUP</a></p>
+ <div class="wrapper">
+      <button (click)="socialLogin('facebook')" class="loginBtn loginBtn--facebook">Login with Facebook</button>
+      <button (click)="socialLogin('google')" class="loginBtn loginBtn--google">Login with Google+</button>
+ </div>
+<p>Need an account? <a href="/signup">SIGNUP</a></p>
 <p>OR GO <a href="/">HOME</a></p>

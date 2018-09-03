@@ -10,7 +10,7 @@ import {AngularFileUploaderComponent} from 'angular-file-uploader';
 import { Directive, HostListener } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import {ChatService} from '../../../services/chat.service';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -33,7 +33,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: () => void) { this.onTouched = fn; }
 
   private isTyping=false;
-  messageArray:Array<Message>=[];
+  messageArray:Array<Message>;
   private chatroom="Web";
   private message:String;
   private likes:number;
@@ -65,7 +65,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
     fileInput: this.fb.control(''),
   });
 
-  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:MyAuthService, private fb: FormBuilder) {
+  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:MyAuthService, private fb: FormBuilder,private chatService:ChatService) {
     this.form.get('fileInput').valueChanges.subscribe(path => 
       {        
         console.log(path);       
@@ -96,6 +96,14 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
     console.log("in forum ngOnInit");
     this.socketService.joinRoom({user:this.authService.getLoggedInUser()/*.username*/,room:this.chatroom});
+    //fetch last message by room
+    this.chatService.getChatsByRoom(this.chatroom).subscribe(
+      (data:Array<Message>)=>{
+        console.log(data);
+        this.messageArray=data;
+        console.log("upload previous messages");
+        console.log(this.messageArray);
+      });
     console.log("finish ngOnInit");
   }
 

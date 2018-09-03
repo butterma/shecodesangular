@@ -69,6 +69,8 @@ export class UserManagmentComponent implements OnInit {
       console.log('Data requested......');
     });
   }
+
+  
   editUser(id){
     console.log("edit user func");
     this.modalService.open('edit-modal');

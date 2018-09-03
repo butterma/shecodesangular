@@ -50,6 +50,8 @@ export class LoginComponent implements OnInit {
       (userData)=>{
         console.log(socialPlatform+" sign in data : ",userData);
         //signin with userData
+        if(userData.email)
+        {
         sessionStorage.setItem('currentUser',JSON.stringify(userData.email)); //save to local storage
         this.userService.getUsereByUsername(userData.email).subscribe(
           user=>{
@@ -72,7 +74,8 @@ export class LoginComponent implements OnInit {
           }
         )        
       }
-    );
+    }
+   );
   }
 login(username,password){
   console.log("new login function");
