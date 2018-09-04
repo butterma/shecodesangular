@@ -18,11 +18,13 @@ export class ChatService {
   updateMessageById(id, username, operation){
     if (operation == "like")
     {
+      console.log("chatservice.like");
       return this.http.post(`${this.uri}/chat/like/${id}`,{username:username});      
     }
 
     else if (operation == "dislike")
     {
+      console.log("chatservice.dislike");
       return this.http.post(`${this.uri}/chat/dislike/${id}`,{username:username}); 
     } 
   }

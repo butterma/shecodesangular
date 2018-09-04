@@ -142,46 +142,14 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
       liked(id)
       {    
         console.log("liked");
-        if (this.firstPress) 
-        {
-          this.likes++;
-          this.pressedLike = true;
-          this.pressedDisLike = false;
-          this.firstPress = false;
-        }
-
-        else
-        {
-          this.likes++;
-          this.dislikes--;
-          this.pressedLike =  !this.pressedLike;
-          this.pressedDisLike = !this.pressedLike;
-        }
-
         this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"like");
-        this.getMessages();
+        //this.getMessages();
       }
 
       disliked(id)
       {
         console.log("dis liked");
-        if (this.firstPress) 
-        {
-          this.dislikes++;
-          this.pressedDisLike = true;
-          this.pressedLike = false;
-          this.firstPress = false;
-        }
-
-        else
-        {
-          this.dislikes++;
-          this.likes--;
-          this.pressedDisLike = !this.pressedDisLike;
-          this.pressedLike =  !this.pressedDisLike;
-        }
-        
         this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"dislike");
-        this.getMessages();
+        //this.getMessages();
       }
 }
