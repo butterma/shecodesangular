@@ -94,8 +94,9 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
     console.log("finish forum construtor");
   }
 
-  getMessages()
+getMessages()
 {
+  console.log("get message");
   //fetch last message by room
   this.chatService.getChatsByRoom(this.chatroom).subscribe(
     (data:Array<Message>)=>{
@@ -109,7 +110,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
     console.log("in forum ngOnInit");
     this.socketService.joinRoom({user:this.authService.getLoggedInUser()/*.username*/,room:this.chatroom});
-    //this.getMessages();
+    this.getMessages();
     console.log("finish ngOnInit");
   }
 
@@ -120,8 +121,9 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
     console.log(this.selectedFile);
     //console.log("files: "+this.fileUploader.uploadMsgText);//JSON.stringify(this.files));    
     this.socketService.sendMessage({room:this.chatroom,user:this.authService.getLoggedInUser(),message:this.message,file:this.selectedFile});
-    this.messageArray.push(new Message(this.authService.getLoggedInUser(),this.message,new Date(),this.selectedFile));
-    this.message='';
+   // this.messageArray.push(new Message(this.authService.getLoggedInUser(),this.message,new Date(),this.selectedFile));
+    this.getMessages(); 
+   this.message='';
   }
 
   typing(){
@@ -141,8 +143,9 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
       }  
       liked(id)
       {    
-        console.log("liked");
-        this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"like");
+        console.log("id: "+id);
+        this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"like")
+          .subscribe();
         //this.getMessages();
       }
 

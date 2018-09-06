@@ -9,17 +9,17 @@ import {DOCUMENT} from '@angular/common';
 })
 export class SocketService {
 
-  private socket=io('http://localhost:3000/chat');
+  private socket=io.connect('http://localhost:3000/chat');
 
   //@ViewChild('siofuInput')siofuInput:ElementRef;
   @ViewChild('marioChat')marioChat:ElementRef;
   constructor(/*@Inject(DOCUMENT)document*/) { 
-    var socket = io.connect();
+    //var socket = io.connect();
     //console.log(this.input.nativeElement);
     console.log("print");
     //console.log(this.marioChat.nativeElement);
     //console.log(document.getElementById('siofu_input'))
-      var uploader = new SocketIOFileUpload(socket);
+      var uploader = new SocketIOFileUpload(this.socket);
       //uploader.listenOnInput(document.getElementById('siofu_input'));
   }
 

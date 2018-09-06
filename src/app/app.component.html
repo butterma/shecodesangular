@@ -10,7 +10,7 @@
             <span class="label">Dashboard</span>
       </a>
       <a mat-list-item *ngIf="authService.loggedIn() && authService.isAdmin()" routerLink="/user-managment">
-        <mat-icon class="icon"></mat-icon>
+        <mat-icon class="icon">people</mat-icon>
         <span class="label">User Managment</span>
       </a>
       <a mat-list-item *ngIf="authService.loggedIn()" routerLink="/forums"> 
@@ -62,7 +62,7 @@
               </li>
              <li *ngIf="authService.loggedIn()  && authService.isAdmin()">
                 <a routerLink="/user-managment">
-                    <mat-icon class="icon"></mat-icon>
+                    <mat-icon class="icon">people</mat-icon>
                     <span class="label">User Managment</span>
                   </a>
              </li> 

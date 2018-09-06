@@ -13,14 +13,15 @@ import {EditModalComponent} from './edit-modal/edit-modal.component';
 import {ChatComponent} from './chat/chat.component';
 import {ForumsComponent} from './forums/forums.component';
 import {ForumComponent} from './forums/components/forum/forum.component';
+import { AdminGuard } from './guards/admin.guard';
 const routes:Routes=[
     {path:'',component:HomeComponent},
     {path:'contact',component:ContactComponent},
     {path:'login',component:LoginComponent},
     {path:'signup',component:SignupComponent},
     {path:'forgot',component:ForgotComponent},
-    {path:'user-managment',component:UserManagmentComponent,canActivate:[AuthGuard]},
-    {path:'edit',component:EditModalComponent, canActivate:[AuthGuard]},
+    {path:'user-managment',component:UserManagmentComponent,canActivate:[AuthGuard]&&[AdminGuard]},
+    {path:'edit',component:EditModalComponent, canActivate:[AuthGuard]&&[AdminGuard]},
     {path:'reset/:token',component:ResetComponent},
     {path:'chat',component:ChatComponent},
     {path:'forums',component:ForumsComponent,canActivate:[AuthGuard]},
