@@ -22,7 +22,6 @@ export class MyAuthService {
         {
         //store user details and jwt
         console.log('save user in session storage');
-        console.log(JSON.stringify(result.role));
         sessionStorage.setItem('currentUser',JSON.stringify(result));  
         console.log(JSON.parse(sessionStorage.getItem('currentUser')).role);
         }
@@ -82,14 +81,13 @@ export class MyAuthService {
 
   isAdmin()
   {
-    const role=JSON.parse(sessionStorage.getItem('currentUser'));
+    const role=JSON.parse(sessionStorage.getItem('currentUser')).role;
     return role==='Admin'?true:false;
   }
   logout(){
     //remove user from local storage
     console.log('in logout function');
     sessionStorage.removeItem('currentUser');
-    //sessionStorage.removeItem('currentRole');
     return this.http.get(`${this.uri}/users/logout`);
   }
 
