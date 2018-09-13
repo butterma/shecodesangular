@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router,ActivatedRoute} from '@angular/router';
+import {Router,ActivatedRoute, Params} from '@angular/router';
 import {SocketService} from '../../services/socket.service';
 import {MyAuthService} from '../../../services/my-auth.service';
 import {MaterialModule} from '../../../material.module';
@@ -34,7 +34,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
 
   private isTyping=false;
   messageArray:Array<Message>;
-  private chatroom="Web";
+  private chatroom;
   private message:String;
   private likes:number;
   private dislikes:number;
@@ -109,6 +109,10 @@ getMessages()
 
   ngOnInit() {
     console.log("in forum ngOnInit");
+    this.route.queryParams.subscribe((params: Params) => {
+      this.chatroom = params['forum'];
+      console.log(this.chatroom);
+    });
     this.socketService.joinRoom({user:this.authService.getLoggedInUser()/*.username*/,room:this.chatroom});
     this.getMessages();
     console.log("finish ngOnInit");
@@ -140,10 +144,16 @@ getMessages()
             this.selectedFile = <File>event.target.files[0];
           }
         }
+<<<<<<< HEAD
   } 
 
    liked(id)
     {    
+=======
+      }  
+  liked(id)
+      {    
+>>>>>>> 1f3a82b177608ce453a367aae30cff8b39de7884
         console.log("id: "+id);
         this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"like")
           .subscribe();
