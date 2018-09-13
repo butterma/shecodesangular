@@ -21,14 +21,15 @@ export class ForumsComponent implements OnInit {
   ngOnInit() {
     this.fetchForums();
   }
+  
   fetchForums(){
     //TODO: get user's forum list
     console.log("fetch forums");
-    this.userService.getUsereByUsername(JSON.parse(sessionStorage.getItem('currentUser')))
+    this.userService.getUsereByUsername(JSON.parse(sessionStorage.getItem("currentUser")))
     .subscribe((data:User)=>{
       this.forums=data.forums;
-      console.log(this.forums);
-      console.log('Data request....');
+      console.log(data);
+      console.log("Data request....");
     });
   }
 

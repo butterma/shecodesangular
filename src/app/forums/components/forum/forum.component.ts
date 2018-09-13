@@ -99,9 +99,9 @@ getMessages()
   console.log("get message");
   //fetch last message by room
   this.chatService.getChatsByRoom(this.chatroom).subscribe(
-    (data:Array<Message>)=>{
+    data =>{
       console.log(data);
-      this.messageArray=data;
+      //this.messageArray=(Message[])data;
       console.log("upload previous messages");
       console.log(this.messageArray);
     });
@@ -140,16 +140,17 @@ getMessages()
             this.selectedFile = <File>event.target.files[0];
           }
         }
-      }  
-      liked(id)
-      {    
+  } 
+
+   liked(id)
+    {    
         console.log("id: "+id);
         this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"like")
           .subscribe();
         //this.getMessages();
       }
 
-      disliked(id)
+  disliked(id)
       {
         console.log("dis liked");
         this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"dislike");

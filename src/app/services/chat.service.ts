@@ -12,20 +12,21 @@ export class ChatService {
     return this.http.get(`${this.uri}/chat`);
   }
   getChatsByRoom(room){
-    return this.http.get(`${this.uri}/chat/${room}`);
+    console.log("get chats by room: " + room);
+    return this.http.get(`${this.uri}/chat/rooms/${room}`);
   }
 
   updateMessageById(id, username, operation){
     if (operation == "like")
     {
       console.log("chatservice.like");
-      return this.http.post(`${this.uri}/chat/like/${id}`,{username:username});      
+      return this.http.post(`${this.uri}/chat/like/:id`,{username:username});      
     }
 
     else if (operation == "dislike")
     {
       console.log("chatservice.dislike");
-      return this.http.post(`${this.uri}/chat/dislike/${id}`,{username:username}); 
+      return this.http.post(`${this.uri}/chat/dislike/:id`,{username:username}); 
     } 
   }
 }
