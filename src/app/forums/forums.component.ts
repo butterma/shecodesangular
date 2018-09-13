@@ -13,7 +13,9 @@ export class ForumsComponent implements OnInit {
 
   private isTyping=false;
   forums:String[];
+  suggestedForums=['Career','MeetUp','Lectures'];
   displayedColumns=['name','action'];
+  columns=['name','myAction'];
   constructor(private router:Router,private chatService:ChatService,private userService:UserService) {
     
    }
@@ -25,7 +27,11 @@ export class ForumsComponent implements OnInit {
   fetchForums(){
     //TODO: get user's forum list
     console.log("fetch forums");
+<<<<<<< HEAD
     this.userService.getUsereByUsername(JSON.parse(sessionStorage.getItem("currentUser")))
+=======
+    this.userService.getUsereByUsername(JSON.parse(sessionStorage.getItem('currentUser')).user)
+>>>>>>> 1f3a82b177608ce453a367aae30cff8b39de7884
     .subscribe((data:User)=>{
       this.forums=data.forums;
       console.log(data);
@@ -34,8 +40,16 @@ export class ForumsComponent implements OnInit {
   }
 
   //open specific forum
-  openForum(){
-    this.router.navigate(['/forum']);
+  openForum(forum){
+    this.router.navigate(['/forum'],{queryParams:{forum:forum}});
+  }
+
+  joinForum(forumName){
+    this.userService.addForumToUser(JSON.parse(sessionStorage.getItem('currentUser')).user,forumName)
+      .subscribe((data)=>{
+        console.log(data);
+        this.fetchForums();
+      });
   }
 
 }
