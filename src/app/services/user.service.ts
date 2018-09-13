@@ -56,4 +56,8 @@ export class UserService {
     this.myToken=window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
     return this.http.post(`${this.uri}/users/reset/:token`,{password:pass,token:this.myToken});
   }
+
+  addForumToUser(username,forum){
+    return this.http.post(`${this.uri}/users/addForum/${username}`,{forum:forum});
+  }
 }
