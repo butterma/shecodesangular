@@ -20,13 +20,13 @@ export class ChatService {
     if (operation == "like")
     {
       console.log("chatservice.like");
-      return this.http.post(`${this.uri}/chat/like/:id`,{username:username});      
+      return this.http.post(`${this.uri}/chat/like/${id}`,{username:username});      
     }
 
     else if (operation == "dislike")
     {
       console.log("chatservice.dislike");
-      return this.http.post(`${this.uri}/chat/dislike/:id`,{username:username}); 
+      return this.http.post(`${this.uri}/chat/dislike/${id}`,{username:username}); 
     } 
   }
 }
