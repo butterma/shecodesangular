@@ -260,6 +260,7 @@ p,a.href{
     border-radius: 5px;
     margin-top: 1px;
     color: white;
+    font-size: 15px;
 }
 
 .secUserMessage {
@@ -292,7 +293,25 @@ p,a.href{
     overflow: auto;
     background: #E2E2E2;
 }
+.container{
+  width: fit-content;
+  font-family: 'Lato', sans-serif;
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: white;
+}
 
+label{
+  font-size: 10px;
+}
+
+button{
+  width: 5x;
+  height: 27px;
+}
 #output p{
     padding: 14px 0px;
     margin: 0 20px;
