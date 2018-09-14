@@ -144,16 +144,10 @@ getMessages()
             this.selectedFile = <File>event.target.files[0];
           }
         }
-<<<<<<< HEAD
   } 
-
-   liked(id)
-    {    
-=======
-      }  
+ 
   liked(id)
       {    
->>>>>>> 1f3a82b177608ce453a367aae30cff8b39de7884
         console.log("id: "+id);
         this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"like")
           .subscribe();

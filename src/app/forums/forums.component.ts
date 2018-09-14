@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ChatService} from '../services/chat.service';
 import {UserService} from '../services/user.service';
+import {MyAuthService} from '../services/my-auth.service';
 import {User} from '../models/user.model';
 import {Message} from './model/message';
 @Component({
@@ -13,10 +14,11 @@ export class ForumsComponent implements OnInit {
 
   private isTyping=false;
   forums:String[];
-  suggestedForums=['Career','MeetUp','Lectures'];
+  staticSuggestedForums=['Career','MeetUp','Lectures'];
+  suggestedForums:String[];//=this.staticSuggestedForums.filter(x=>this.forums.indexOf(x)<0);
   displayedColumns=['name','action'];
   columns=['name','myAction'];
-  constructor(private router:Router,private chatService:ChatService,private userService:UserService) {
+  constructor(private router:Router,private authService:MyAuthService, private chatService:ChatService,private userService:UserService) {
     
    }
 
@@ -30,9 +32,16 @@ export class ForumsComponent implements OnInit {
     this.userService.getUsereByUsername(JSON.parse(sessionStorage.getItem("currentUser")))
 
     .subscribe((data:User)=>{
-      this.forums=data.forums;
-      console.log(data);
-      console.log("Data request....");
+      if(data){
+        this.forums=data.forums;
+        this.suggestedForums=this.staticSuggestedForums.filter(x=>this.forums.indexOf(x)<0);
+        console.log(data);
+        console.log("Data request....");
+      }
+    },
+    error=>{
+      this.suggestedForums=this.staticSuggestedForums;
+      console.log(error);
     });
   }
 

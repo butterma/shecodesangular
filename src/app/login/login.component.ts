@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
         //signin with userData
         if(userData.email)
         {
-        sessionStorage.setItem('currentUser',JSON.stringify(userData.email)); //save to local storage
-        this.userService.getUsereByUsername(userData.email).subscribe(
+        sessionStorage.setItem('currentUser',JSON.stringify({user:userData.email})); //save to local storage
+        this.userService.getUsereByUsername({user:userData.email}).subscribe(
           user=>{
             if (!user)
             {
@@ -70,9 +70,12 @@ export class LoginComponent implements OnInit {
               ); 
             }
             else
-            this.router.navigate(['/']);            
+            {
+              console.log("navigate to home page");
+              this.router.navigate(['/']);            
           }
-        )        
+        }
+        );        
       }
     }
    );

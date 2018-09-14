@@ -3,10 +3,10 @@
   <mat-card>
     <h3>Forums</h3>
     <mat-divider></mat-divider>
-   <!-- <br>
-    <button mat-raised-button color="primary" routerLink="/create">Join New Forum</button>
+   <br>
+    <button mat-raised-button color="primary" routerLink="/create" *ngIf="authService.isAdmin()">Create Forum</button>
     <br><br>
-    <mat-divider></mat-divider>-->
+    <mat-divider></mat-divider>
     <br>
     <table mat-table [dataSource]="forums">
       <ng-container matColumnDef="name">
