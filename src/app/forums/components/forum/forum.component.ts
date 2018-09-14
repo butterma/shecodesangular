@@ -99,9 +99,9 @@ getMessages()
   console.log("get message");
   //fetch last message by room
   this.chatService.getChatsByRoom(this.chatroom).subscribe(
-    data =>{
+    (data:Message[]) =>{
       console.log(data);
-      //this.messageArray=(Message[])data;
+      this.messageArray=data;
       console.log("upload previous messages");
       console.log(this.messageArray);
     });
@@ -111,7 +111,7 @@ getMessages()
     console.log("in forum ngOnInit");
     this.route.queryParams.subscribe((params: Params) => {
       this.chatroom = params['forum'];
-      console.log(this.chatroom);
+      console.log("chatroom: " + this.chatroom);
     });
     this.socketService.joinRoom({user:this.authService.getLoggedInUser()/*.username*/,room:this.chatroom});
     this.getMessages();
