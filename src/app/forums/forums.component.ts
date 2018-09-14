@@ -27,11 +27,8 @@ export class ForumsComponent implements OnInit {
   fetchForums(){
     //TODO: get user's forum list
     console.log("fetch forums");
-<<<<<<< HEAD
     this.userService.getUsereByUsername(JSON.parse(sessionStorage.getItem("currentUser")))
-=======
-    this.userService.getUsereByUsername(JSON.parse(sessionStorage.getItem('currentUser')).user)
->>>>>>> 1f3a82b177608ce453a367aae30cff8b39de7884
+
     .subscribe((data:User)=>{
       this.forums=data.forums;
       console.log(data);
