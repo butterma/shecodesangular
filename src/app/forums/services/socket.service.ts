@@ -30,12 +30,14 @@ export class SocketService {
   }
 
   sendMessage(data){
-    this.socket.emit('message',data);
+    //this.socket.emit('message',data);
+    this.socket.send(data);
   }
 
   newMessageRecived(){
     const observable=new Observable<Message>(observer=>{
       this.socket.on('message',(data)=>{
+        console.log("on message");
         observer.next(data);
       });
       return()=>{
@@ -66,7 +68,7 @@ export class SocketService {
     const observable=new Observable<Message>(observer=>{
       this.socket.on('joined',(data)=>{
         console.log('new member joined');
-        let message:Message= new Message(data.user,'joined the room',new Date(),null);
+        let message:Message= new Message(data.user,'joined the room',new Date(),null,null);
         console.log(message);
         observer.next(message);
       }/*,

@@ -9,6 +9,7 @@
         <p [class.userMessage] = "item.username == authService.getLoggedInUser().username" [class.secUserMessage]="item.username != authService.getLoggedInUser().username">
            {{ item.content }}            
           </p> 
+          <button *ngIf="item.fileName" (click)="downloadFile(item.file,item.fileName)">{{item.fileName}}</button>
           <label >{{item.likes.length}} likes   </label>
             <label>{{item.dislikes.length}}  dislikes</label>
             <button id = "like_button" matTooltip="{{item.likes}}" (click)="liked(item._id)" >

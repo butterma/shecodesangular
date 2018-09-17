@@ -42,6 +42,8 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
   private pressedDisLike:Boolean;
   private firstPress:Boolean;
   private fileNgModel:File;
+  private selectedFile : File = null;
+  private fileName:String = null;
   @ViewChild('fileUploader')
   private fileUploader:AngularFileUploaderComponent;
 
@@ -121,10 +123,10 @@ getMessages()
 
 
   sendMessage(){
-    console.log("in send message");
-    console.log(this.selectedFile);
-    //console.log("files: "+this.fileUploader.uploadMsgText);//JSON.stringify(this.files));    
-    this.socketService.sendMessage({room:this.chatroom,user:this.authService.getLoggedInUser(),message:this.message,file:this.selectedFile});
+    console.log("in send message"); 
+    if (this.selectedFile)
+      this.fileName = this.selectedFile.name     
+    this.socketService.sendMessage({room:this.chatroom,user:this.authService.getLoggedInUser(),message:this.message,file:this.selectedFile,fileName:this.fileName});
    // this.messageArray.push(new Message(this.authService.getLoggedInUser(),this.message,new Date(),this.selectedFile));
     this.getMessages(); 
    this.message='';
@@ -135,7 +137,6 @@ getMessages()
     this.socketService.typing({room:this.chatroom,user: this.authService.getLoggedInUser()});
   }
 
-  selectedFile : File = null;
   onFileChanged(event) { // called each time file input changes
     console.log("onFileChanged");
       if (event.target.files && event.target.files[0]) {
@@ -159,5 +160,11 @@ getMessages()
         console.log("dis liked");
         this.chatService.updateMessageById(id, sessionStorage.getItem("currentUser"),"dislike");
         //this.getMessages();
+      }
+
+      downloadFile(buffer:File, name:String)
+      {
+        console.log("tryingto push file");
+        this.chatService.pushFileToStorage(buffer,name);      
       }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {HttpClient,HttpRequest,HttpEvent} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,5 +29,18 @@ export class ChatService {
       console.log("chatservice.dislike");
       return this.http.post(`${this.uri}/chat/dislike/${id}`,{username:username}); 
     } 
+  }
+
+  pushFileToStorage(file: File, name: String): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+    console.log("formdata created");
+    formdata.append('file', new File(["hi"], "name"));
+    console.log("file appended");
+    const req = new HttpRequest('GET', 'http://localhost:4200/api/file/' + name, formdata, {
+      reportProgress: true,
+      responseType: 'arraybuffer'
+    });
+
+    return this.http.request(req);      
   }
 }
