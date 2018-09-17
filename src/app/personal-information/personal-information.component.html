@@ -1,0 +1,34 @@
+<header>PERSONAL INFORMATION</header>
+<img src="{{user.image}}">
+<form id=form [formGroup]="personalForm" class="topBefore">
+    <mat-form-field class="field-full-width">
+      <input placeholder="Username" matInput formControlName="username" #username>
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <!--  <mat-select placeholder="Role" [(ngModel)]="selectedrole" formControlName="role" #role>
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+              {{role.viewValue}}
+            </mat-option>
+          </mat-select>-->
+          <input placeholder="Role" matInput formControlName="role" #role>
+      </mat-form-field>
+    <mat-form-field class="field-full-width">
+        <!--<mat-select placeholder="Branch" [(ngModel)]="selectedbranch" formControlName="branch" #branch>
+            <mat-option *ngFor="let branch of branches" [value]="branch.value">
+              {{branch.viewValue}}
+            </mat-option>
+          </mat-select>-->
+          <input placeholder="Branch" matInput formControlName="branch" #branch>
+        </mat-form-field>                
+    <mat-form-field class="field-full-width">
+       <!-- <mat-select placeholder="Course" [(ngModel)]="selectedcourse" formControlName="course" #course>
+            <mat-option *ngFor="let course of courses" [value]="course.value">
+              {{course.viewValue}}
+            </mat-option>
+          </mat-select>-->
+          <input placeholder="Course" matInput formControlName="course" #course>
+       </mat-form-field>
+        <mat-checkbox class="field-full-width" formControlName="approved" #approved>Approved</mat-checkbox>
+    
+  </form>
+  

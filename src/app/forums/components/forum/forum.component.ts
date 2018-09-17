@@ -99,6 +99,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
 getMessages()
 {
   console.log("get message");
+  this.beforeSearch = true;
   //fetch last message by room
   this.chatService.getChatsByRoom(this.chatroom).subscribe(
     (data:Message[]) =>{
@@ -165,6 +166,21 @@ getMessages()
       downloadFile(buffer:File, name:String)
       {
         console.log("tryingto push file");
-        this.chatService.pushFileToStorage(buffer,name);      
+        //this.chatService.pushFileToStorage(buffer,name);      
+      }
+
+      
+      private beforeSearch:Boolean = true;
+      private listBeforeSearch:Array<Message>;
+      //search  function
+      findWord(word){
+        if (this.beforeSearch)
+        {
+          this.beforeSearch = false;
+          this.listBeforeSearch = this.messageArray;
+        }
+        console.log(word);
+        var tempList=this.messageArray;
+       this.messageArray= this.listBeforeSearch.filter(m=>m.content.includes(word));
       }
 }

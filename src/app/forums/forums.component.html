@@ -4,7 +4,18 @@
     <h3>Forums</h3>
     <mat-divider></mat-divider>
    <br>
-    <button mat-raised-button color="primary" routerLink="/create" *ngIf="authService.isAdmin()">Create Forum</button>
+    <button mat-raised-button color="primary" (click)="addNewForum.open()" *ngIf="authService.isAdmin()">Create Forum</button>
+    <modal #addNewForum>
+      <ng-template #modalBody>
+        <div class="modal-body" style="text-align:center;">
+          <h4 style="padding: 0px 15px 0px 15px;">Insert new forum name:</h4>
+        <input type="text" placeholder="Forum name" #forumName>
+        <br><br>
+        <button mat-raised-button class="save-button" (click)="addForum(forumName.value) && addNewForum.close()">Save</button>
+      <br> 
+      </div>
+      </ng-template>
+    </modal>
     <br><br>
     <mat-divider></mat-divider>
     <br>

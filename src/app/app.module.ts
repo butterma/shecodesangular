@@ -30,7 +30,8 @@ import {ModalService} from './services/modal.service';
 import { ChatModule } from './chat/chat.module';
 import { ForumsModule } from './forums/forums.module';
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider} from 'angular-6-social-login';
-
+import {ModalModule} from 'angular-custom-modal';
+import { PersonalInformationComponent } from './personal-information/personal-information.component';
 export function getAuthServiceConfigs(){
   let config=new AuthServiceConfig(
     [
@@ -62,7 +63,8 @@ export function getAuthServiceConfigs(){
     MatSelectModule,
     ChatModule,
     ForumsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    ModalModule
   ],
   declarations: [
     AppComponent,
@@ -75,7 +77,8 @@ export function getAuthServiceConfigs(){
     ResetComponent,
     AlertComponent,
     UserManagmentComponent,
-    EditModalComponent
+    EditModalComponent,
+    PersonalInformationComponent
   ],
   
   providers: [/*IssueService,*/

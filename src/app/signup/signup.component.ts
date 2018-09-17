@@ -54,13 +54,14 @@ export class SignupComponent implements OnInit {
   }
    signup(username,password,branch,course){
      console.log(username+" "+password+" "+branch+" "+course );
+     
      const upLoadData=new FormData();
     upLoadData.append('username',username);
     upLoadData.append('password',password);
     upLoadData.append('branch',branch);
     upLoadData.append('course',course);
     upLoadData.append('approved','0');
-    upLoadData.append('image',this.selectedFile,this.selectedFile.name);
+    upLoadData.append('image',this.selectedFile,"localhost:3000/public/uploads/" + this.selectedFile.name);
     this.userService.addUser(upLoadData)
       .pipe(first())
       .subscribe(

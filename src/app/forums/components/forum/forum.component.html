@@ -1,6 +1,7 @@
 <script src="/siofu/client.js"></script>
 <div id="mario-chat" #marioChat>
   <h2>{{ username }}</h2>
+  <input #myInput placeholder="Search" [(ngModel)]="name" (input)="findWord(myInput.value)">
   <span><i *ngIf="isTyping" class="isTyping">typing...</i></span>
   <div id="chat-window">
       <div class="container" *ngFor="let item of messageArray">
@@ -9,7 +10,8 @@
         <p [class.userMessage] = "item.username == authService.getLoggedInUser().username" [class.secUserMessage]="item.username != authService.getLoggedInUser().username">
            {{ item.content }}            
           </p> 
-          <button *ngIf="item.fileName" (click)="downloadFile(item.file,item.fileName)">{{item.fileName}}</button>
+          <!--<button *ngIf="item.fileName" (click)="downloadFile(item.file,item.fileName)">-->
+            <a *ngIf="item.fileName" href="data:application/octet-stream,bla%2Cbla">{{item.fileName}}</a>
           <label >{{item.likes.length}} likes   </label>
             <label>{{item.dislikes.length}}  dislikes</label>
             <button id = "like_button" matTooltip="{{item.likes}}" (click)="liked(item._id)" >

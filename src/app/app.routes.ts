@@ -14,6 +14,7 @@ import {ChatComponent} from './chat/chat.component';
 import {ForumsComponent} from './forums/forums.component';
 import {ForumComponent} from './forums/components/forum/forum.component';
 import { AdminGuard } from './guards/admin.guard';
+import {PersonalInformationComponent} from './personal-information/personal-information.component';
 const routes:Routes=[
     {path:'',component:HomeComponent},
     {path:'contact',component:ContactComponent},
@@ -25,7 +26,8 @@ const routes:Routes=[
     {path:'reset/:token',component:ResetComponent},
     {path:'chat',component:ChatComponent},
     {path:'forums',component:ForumsComponent,canActivate:[AuthGuard]},
-    {path:'forum',component:ForumComponent,canActivate:[AuthGuard]}
+    {path:'forum',component:ForumComponent,canActivate:[AuthGuard]},
+    {path:'personal-information', component:PersonalInformationComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

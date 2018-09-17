@@ -5,6 +5,7 @@ import { ForumsComponent } from './forums.component';
 import { ForumComponent } from './components/forum/forum.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import {ModalModule} from 'angular-custom-modal';
 import * as SocketIOFileUpload from "socketio-file-upload";
 import { BrowserModule } from '@angular/platform-browser';
 import { FileValueAccessor } from './file-value-accessor.directive';
@@ -16,7 +17,8 @@ import { FileValueAccessor } from './file-value-accessor.directive';
     CommonModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule
   ],
   declarations: [ForumsComponent, ForumComponent]
 })

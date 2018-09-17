@@ -4,6 +4,7 @@ import {ChatService} from '../services/chat.service';
 import {UserService} from '../services/user.service';
 import {MyAuthService} from '../services/my-auth.service';
 import {User} from '../models/user.model';
+import {ModalModule} from 'angular-custom-modal';
 import {Message} from './model/message';
 @Component({
   selector: 'app-forums',
@@ -18,7 +19,7 @@ export class ForumsComponent implements OnInit {
   suggestedForums:String[];//=this.staticSuggestedForums.filter(x=>this.forums.indexOf(x)<0);
   displayedColumns=['name','action'];
   columns=['name','myAction'];
-  constructor(private router:Router,private authService:MyAuthService, private chatService:ChatService,private userService:UserService) {
+  constructor(private router:Router,private modalModule:ModalModule, private authService:MyAuthService, private chatService:ChatService,private userService:UserService) {
     
    }
 
@@ -56,6 +57,13 @@ export class ForumsComponent implements OnInit {
         console.log(data);
         this.fetchForums();
       });
+  }
+
+  addForum(forumName){
+    console.log("forum to add: "+forumName);
+    this.staticSuggestedForums.push(forumName);
+    console.log(this.staticSuggestedForums);
+    this.fetchForums();
   }
 
 }
