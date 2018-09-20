@@ -22,19 +22,24 @@ export class ResetComponent implements OnInit {
       confirmPassword:''
     });
    }
-   reset(pass){
-     console.log("new password: "+pass);
-     this.userService.updateUserPassword(pass)
-     .pipe(first())
-     .subscribe(
-       data=>{
-       console.log("send new password");
-       this.alertService.success("Password reset succefully");
-       this.router.navigate(['/login']);
-       },
-       error=>{
-        this.alertService.error(error.error.message);
-       });
+   reset(pass, confirmPass){
+     console.log(pass + ", " + confirmPass);
+     if (pass == confirmPass)
+     {
+      console.log("new password: "+pass);
+      this.userService.updateUserPassword(pass)
+      .pipe(first())
+      .subscribe(
+        data=>{
+        console.log("send new password");
+        this.alertService.success("Password reset succefully");
+        this.router.navigate(['/login']);
+        },
+        error=>{
+         this.alertService.error(error.error.message);
+        });
+     }
+     else this.alertService.error("confirm password is not the same as new password.")
    }
   ngOnInit() {
   }

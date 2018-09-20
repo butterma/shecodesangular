@@ -6,5 +6,5 @@
     <mat-form-field  class="field-full-width" [floatLabel]="never">
       <input matInput type="password" placeholder="CONFIRM PASSWORD" formControlName="confirmPassword" #confirmPassword>
     </mat-form-field>
-    <button id="submit" type="submit" (click)="reset(password.value)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">RESET</button>
+    <button id="submit" type="submit" (click)="reset(password.value,confirmPassword.value)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">RESET</button>
    </form>
