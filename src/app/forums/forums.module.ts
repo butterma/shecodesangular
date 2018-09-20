@@ -6,6 +6,7 @@ import { ForumComponent } from './components/forum/forum.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import {ModalModule} from 'angular-custom-modal';
+import * as FileSaver from "file-saver";
 import * as SocketIOFileUpload from "socketio-file-upload";
 import { BrowserModule } from '@angular/platform-browser';
 import { FileValueAccessor } from './file-value-accessor.directive';

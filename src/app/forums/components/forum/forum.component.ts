@@ -11,6 +11,9 @@ import { Directive, HostListener } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ChatService} from '../../../services/chat.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { HttpRequest } from '@angular/common/http';
+import * as FileSaver from 'file-saver';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -67,7 +70,10 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
     fileInput: this.fb.control(''),
   });
 
-  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,private authService:MyAuthService, private fb: FormBuilder,private chatService:ChatService) {
+
+  constructor(private router:Router,private route:ActivatedRoute,private socketService:SocketService,
+    private authService:MyAuthService, private fb: FormBuilder,private chatService:ChatService,
+    private sanitizer: DomSanitizer) {
     this.form.get('fileInput').valueChanges.subscribe(path => 
       {        
         console.log(path);       
@@ -163,10 +169,13 @@ getMessages()
         //this.getMessages();
       }
 
-      downloadFile(buffer:File, name:String)
+      downloadFile(buffer:File, name:string)
       {
-        console.log("tryingto push file");
-        //this.chatService.pushFileToStorage(buffer,name);      
+        const blob = new Blob([buffer], { type: 'application/octet-stream' });
+        //TODO: add to URL parameter forum (room?)
+        //const fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
+        //this.router.navigate([fileUrl]);
+        saveAs(blob, name);
       }
 
       
