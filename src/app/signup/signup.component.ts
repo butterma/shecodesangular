@@ -52,16 +52,31 @@ export class SignupComponent implements OnInit {
       confirmPassword:''
     });
   }
-   signup(username,password,branch,course){
+
+
+   signup(username,password,confirmPassword,branch,course){
      console.log(username+" "+password+" "+branch+" "+course );
-     
+     if (username == "" || password == "" ||confirmPassword == "" || branch == "" || course == "" || this.selectedFile == null)
+     {
+        this.alertService.error("you didn't fill in all the fields");
+        return;
+      }
+
+      if (password != confirmPassword){
+        console.log("the confirm password is not the same as the password");
+        this.alertService.error("the confirm passord is not the same as the password");
+        return;
+      }
+      console.log("success");
      const upLoadData=new FormData();
     upLoadData.append('username',username);
     upLoadData.append('password',password);
     upLoadData.append('branch',branch);
     upLoadData.append('course',course);
     upLoadData.append('approved','0');
-    upLoadData.append('image',this.selectedFile,"localhost:3000/public/uploads/" + this.selectedFile.name);
+    if (this.selectedFile)
+      upLoadData.append('image',this.selectedFile,"localhost:3000/public/uploads/" + this.selectedFile.name);
+      else upLoadData.append('image','');
     this.userService.addUser(upLoadData)
       .pipe(first())
       .subscribe(

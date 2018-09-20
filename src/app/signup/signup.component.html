@@ -32,5 +32,5 @@
     <input type="file" (change)="onFileChanged($event)" required>
    
    <!-- <input id="submit" type="submit" value="SIGNUP">-->
-    <button id="submit" type="submit" (click)="signup(username.value,password.value,selectedbranch,selectedcourse)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">SIGNUP</button>
+    <button id="submit" type="submit" (click)="signup(username.value,password.value,confirmPassword.value,selectedbranch,selectedcourse)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">SIGNUP</button>
 </form>
