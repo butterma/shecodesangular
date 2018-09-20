@@ -90,8 +90,9 @@ login(username,password){
         this.router.navigate(['/']);
       },
       error=>{
-        console.log(error.error.message);
-        this.alertService.error(error.error.message);
+        console.log(error.error);
+        //console.log(error.error.message);
+        this.alertService.error(error.error);
         this.loading=false;
       });
 }    
