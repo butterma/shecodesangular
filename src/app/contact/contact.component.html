@@ -1,10 +1,10 @@
 <header>CONTACT US</header>
 
-<form id="form" class="topBefore">
+<form id="form" [formGroup]="contactForm" class="topBefore">
 		
 		  <input id="name" type="text" placeholder="NAME" formControlName="name" #name>
 		  <input id="email" type="text" placeholder="E-MAIL" formControlName="email" #email>
 		  <textarea id="message" type="text" placeholder="MESSAGE" formControlName="message" #message></textarea>
-  <button id="submit" type="submit" (click)="sendContact(name.value,email.value,message.value)" [disabled]="createForm.pristine||createForm.invalid" mat-raised-button color="primary">GO!</button>
+  <button id="submit" type="submit" (click)="sendContact(name.value,email.value,message.value)" [disabled]="contactForm.pristine||contactForm.invalid" mat-raised-button color="primary">GO!</button>
   
 </form>
