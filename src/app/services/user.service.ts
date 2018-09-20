@@ -60,4 +60,8 @@ export class UserService {
   addForumToUser(username,forum){
     return this.http.post(`${this.uri}/users/addForum/${username}`,{forum:forum});
   }
+
+  sendContactMail(name,email){
+    return this.http.post(`${this.uri}/users/sendContactMail`,{name:name,mail:email});
+  }
 }

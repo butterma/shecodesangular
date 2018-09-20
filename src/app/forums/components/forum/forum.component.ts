@@ -12,6 +12,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ChatService} from '../../../services/chat.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import {Buffer} from 'buffer';
 import { HttpRequest } from '@angular/common/http';
 import * as FileSaver from 'file-saver';
 @Component({
@@ -82,6 +83,7 @@ export class ForumComponent implements OnInit, ControlValueAccessor {
     console.log("in forum constructor");
     this.socketService.newMessageRecived().subscribe(data=>{
       this.messageArray.push(data);
+      console.log(data);
       console.log("message array: ");
       console.log(this.messageArray);
       this.isTyping=false;
@@ -127,8 +129,6 @@ getMessages()
     console.log("finish ngOnInit");
   }
 
-
-
   sendMessage(){
     console.log("in send message"); 
     if (this.selectedFile)
@@ -169,13 +169,20 @@ getMessages()
         //this.getMessages();
       }
 
-      downloadFile(buffer:File, name:string)
+     
+  downloadFile(buffer, name:string)
       {
-        const blob = new Blob([buffer], { type: 'application/octet-stream' });
+        console.log((buffer.data));
+        var data=buffer.data;
+        console.log(data);
+       /* var buf=Buffer.from(JSON.stringify(buffer.data));
+        console.log(buf);*/
+        const blob = new Blob([new Uint8Array(buffer.data)],{type:'application/*'});
+        console.log(blob);
         //TODO: add to URL parameter forum (room?)
         //const fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
         //this.router.navigate([fileUrl]);
-        saveAs(blob, name);
+       FileSaver.saveAs(blob, name);
       }
 
       

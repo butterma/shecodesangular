@@ -3,7 +3,7 @@ export class Message {
     username:String;
     content:String;
     date:Date;
-    file:File;
+    file;
     fileName:String;
     likes:String[];
     dislikes:String[];
